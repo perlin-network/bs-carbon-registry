@@ -6,6 +6,7 @@ import MapComponent from '../../Components/Maps/MapComponent';
 import config from '../../config';
 
 const mapType = config.mapType;
+const contactIframeUrl = config.iframurl + '/contact';
 
 const Contact = () => {
   return (
@@ -15,9 +16,8 @@ const Contact = () => {
         <div className="container">
           <div className="section-row">
             <div className="section-column">
-              <div>Contact Us</div>
               <h2>Hello, Any Questions?</h2>
-              <Form name="contact" layout="vertical">
+              {/* <Form name="contact" layout="vertical">
                 <Form.Item label="Name" name="name">
                   <Input placeholder="Enter your name" />
                 </Form.Item>
@@ -28,7 +28,11 @@ const Contact = () => {
                   <Input.TextArea placeholder="Your message..." rows={6} />
                 </Form.Item>
                 <Button size="large">Send Message</Button>
-              </Form>
+              </Form> */}
+              <iframe
+                src={contactIframeUrl}
+                style={{ width: '100%', height: '450px', flex: 1, border: 'none' }}
+              ></iframe>
             </div>
             <div className="section-column">
               <MapComponent

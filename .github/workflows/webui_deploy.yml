@@ -27,6 +27,14 @@ jobs:
           echo "Branch: ${{ github.ref_name }}"
           echo "Stage Name: ${{ github.event.inputs.stage_name }}"
 
+      - name: Set REACT_APP_IFRAME_BASE_URL
+        run: |
+          if [ "${{ github.event.inputs.stage_name }}" == "ner" ]; then
+            echo "REACT_APP_IFRAME_BASE_URL=https://prod-carbon-app.mtckarn7q2.com" >> $GITHUB_ENV
+          else
+            echo "REACT_APP_IFRAME_BASE_URL=https://carbon-app.mtckarn7q2.com" >> $GITHUB_ENV
+          fi
+
       - name: Cache modules
         uses: actions/cache@v4
         id: yarn-cache
