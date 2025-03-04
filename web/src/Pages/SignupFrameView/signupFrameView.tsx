@@ -1,4 +1,3 @@
-import { useEffect, useRef, useState } from 'react';
 import './signupFrameView.scss';
 import config from '../../config';
 const signupIframeUrl = config.iframurl + '/signup';
