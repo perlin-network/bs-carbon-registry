@@ -4,9 +4,10 @@ on:
     inputs:
       stage_name:
         type: choice
-        description: 'Stage name (default: prod)'
+        description: 'Stage name (default: dev)'
         options:
         - prod
+        - dev
 
 jobs:
   check_dependency_change:
