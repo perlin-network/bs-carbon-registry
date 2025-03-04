@@ -1,4 +1,4 @@
-import { Logger, Module } from '@nestjs/common';
+import { forwardRef, Logger, Module } from '@nestjs/common';
 import { ProgrammeService } from './programme.service';
 import { ProgrammeLedgerModule } from '../programme-ledger/programme-ledger.module';
 import { CaslModule } from '../casl/casl.module';
@@ -19,13 +19,13 @@ import { FileHandlerModule } from '../file-handler/filehandler.module';
 
 @Module({
   imports: [
-    ProgrammeLedgerModule, 
+    forwardRef(() => ProgrammeLedgerModule),
     CaslModule, 
     TypeOrmModule.forFeature([Programme, ProgrammeTransfer, ConstantEntity, Company, ProgrammeQueryEntity, ProgrammeTransferViewEntityQuery]), 
-    UtilModule, 
-    CompanyModule, 
-    UserModule,
-    EmailHelperModule,
+    forwardRef(() => UtilModule), 
+    forwardRef(() => CompanyModule),
+    forwardRef(() => UserModule),
+    forwardRef(() => EmailHelperModule),
     LocationModule,
     AsyncOperationsModule,
     FileHandlerModule,

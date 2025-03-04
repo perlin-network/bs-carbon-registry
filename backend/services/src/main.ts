@@ -44,13 +44,13 @@ async function bootstrap() {
     const app = await buildNestApp(module, "/" + httpPath);
     if (moduleName == "national-api") {
 
-      if (fs.existsSync('organisations.csv')) {
+      if (fs.existsSync('organisations.csv') && fs.lstatSync('organisations.csv').isFile()) {
         const orgs = await fs.readFileSync("organisations.csv", "utf8");
         console.log("Inserting orgs", orgs);
         await setupHandler.handler({ type: "IMPORT_ORG", body: orgs });
       }
       
-      if (fs.existsSync('users.csv')) {
+      if (fs.existsSync('users.csv') && fs.lstatSync('users.csv').isFile()) {
         const users = await fs.readFileSync("users.csv", "utf8");
         console.log("Inserting users", users);
         await setupHandler.handler({ type: "IMPORT_USERS", body: users });
