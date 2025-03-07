@@ -26,7 +26,7 @@ import { FileHandlerModule } from "../file-handler/filehandler.module";
     TypeOrmModule.forFeature([Company, ProgrammeTransfer]),
     CaslModule,
     UtilModule,
-    ProgrammeLedgerModule,
+    forwardRef(() => ProgrammeLedgerModule),
     FileHandlerModule,
     forwardRef(() => EmailHelperModule),
   ],

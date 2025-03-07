@@ -3,7 +3,7 @@ service: bs-carbon-registry-services
 provider:
   name: aws
   runtime: nodejs16.x
-  stage: ${opt:stage, 'prod'}
+  stage: ${opt:stage, 'dev'}
   region: us-east-1
   environment:
     PROJECT_NAME: ${self:service}
@@ -11,7 +11,7 @@ provider:
     FILE_SERVICE: 'S3'
     LOG_LEVEL: 'info'
     DOMAIN_MAP: 'false'
-    SOURCE_EMAIL: 'National Emission Registry <official@bahamasemissionregistry.org>'
+    SOURCE_EMAIL: 'National Emission Registry <ner@bahamas.gov.bs>'
     NODE_PATH: './:/opt/node_modules'
     STAGE: ${self:provider.stage}
     LEDGER_TYPE: QLDB #QLDB, PGSQL

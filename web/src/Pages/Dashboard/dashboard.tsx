@@ -49,6 +49,7 @@ import {
   MarkerData,
 } from '../../Definitions/InterfacesAndType/mapComponent.definitions';
 import config from '../../config';
+import { Role } from '../../Casl/enums/role.enum';
 
 const { RangePicker } = DatePicker;
 
@@ -1878,25 +1879,48 @@ ${total}
               )}
             />
           </Col>
-          <Col xxl={8} xl={8} md={12} className="stastic-card-col">
-            <PieChartsStat
-              id="certified-credits"
-              title={t('certifiedCredits')}
-              options={optionDonutPieB}
-              series={creditsCertifiedPieSeries}
-              lastUpdate={lastUpdateCertifiedCreditsStats}
-              loading={loading}
-              toolTipText={t(
-                userInfoState?.companyRole === CompanyRole.GOVERNMENT
-                  ? 'tTCertifiedCreditsGovernment'
-                  : userInfoState?.companyRole === CompanyRole.PROGRAMME_DEVELOPER
-                  ? 'tTCertifiedCreditsProgrammeDev'
-                  : categoryType === 'mine'
-                  ? 'tTCertifiedCreditsCertifierMine'
-                  : 'tTCertifiedCreditsCertifierOverall'
-              )}
-            />
-          </Col>
+          {userInfoState?.companyRole === CompanyRole.GOVERNMENT &&
+            userInfoState?.userRole === Role.Root && (
+              <Col xxl={8} xl={8} md={12} className="stastic-card-col p-3">
+                <div className="stastics-and-pie-card height-pie-rem">
+                  <div className="dashboard-login-buttons">
+                    <a
+                      className="login-button"
+                      href={config.carbonLogin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Domestic Reporting Entity Administration
+                    </a>
+                    <a
+                      className="login-button"
+                      href={config.bioLogin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Bio Assets Registry Administration
+                    </a>
+                  </div>
+                </div>
+                {/* <PieChartsStat
+                  id="certified-credits"
+                  title={t('certifiedCredits')}
+                  options={optionDonutPieB}
+                  series={creditsCertifiedPieSeries}
+                  lastUpdate={lastUpdateCertifiedCreditsStats}
+                  loading={loading}
+                  toolTipText={t(
+                    userInfoState?.companyRole === CompanyRole.GOVERNMENT
+                      ? 'tTCertifiedCreditsGovernment'
+                      : userInfoState?.companyRole === CompanyRole.PROGRAMME_DEVELOPER
+                      ? 'tTCertifiedCreditsProgrammeDev'
+                      : categoryType === 'mine'
+                      ? 'tTCertifiedCreditsCertifierMine'
+                      : 'tTCertifiedCreditsCertifierOverall'
+                  )}
+                /> */}
+              </Col>
+            )}
         </Row>
       </div>
       <div className="stastics-and-charts-container center">
