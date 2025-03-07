@@ -41,6 +41,20 @@ jobs:
           else
             echo "REACT_APP_IFRAME_BASE_URL=https://carbon-app.mtckarn7q2.com" >> $GITHUB_ENV
           fi
+      - name: Set REACT_APP_CARBON_LOGIN_LINK
+        run: |
+          if [ "${{ github.event.inputs.stage_name }}" == "ner" ]; then
+            echo "REACT_APP_CARBON_LOGIN_LINK=https://prod-carbon-admin.mtckarn7q2.com" >> $GITHUB_ENV
+          else
+            echo "REACT_APP_CARBON_LOGIN_LINK=https://carbon-admin.mtckarn7q2.com" >> $GITHUB_ENV
+          fi
+      - name: Set REACT_APP_BIO_LOGIN_LINK
+        run: |
+          if [ "${{ github.event.inputs.stage_name }}" == "ner" ]; then
+            echo "REACT_APP_BIO_LOGIN_LINK=https://prod-bio-admin.mtckarn7q2.com" >> $GITHUB_ENV
+          else
+            echo "REACT_APP_BIO_LOGIN_LINK=https://bio-admin.mtckarn7q2.com" >> $GITHUB_ENV
+          fi
 
       - name: Cache modules
         uses: actions/cache@v4
