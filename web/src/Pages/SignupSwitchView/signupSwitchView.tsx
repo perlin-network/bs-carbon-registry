@@ -42,24 +42,38 @@ const SignupSwitchView = () => {
   }, []);
 
   return (
-    <div className="page-button-container">
-      <div className="button-container">
-        <div className="div-container">
-          <Button type="primary" onClick={() => navigate('/signUp')}>
-            Management Company
-          </Button>
-          Sign-up as a Management Company to develop and trade carbon credits or ITMOs recognised in
-          the Commonwealth of The Bahamas
-        </div>
-        <div className="div-container">
-          <Button type="primary" onClick={() => navigate('/signupFrameView')}>
-            Domestic Reporting Entity
-          </Button>
-          Sign-up as a Domestic Reporting Entity to report activity data relating to greenhouse gas
-          emissions in the Commonwealth of The Bahamas
+    <>
+      <div className="video-container" style={{ textAlign: 'center', margin: '40px  0 0 0' }}>
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/YdNhO6-JUj4?si=SJVSUkBAa_icbjMS&amp;controls=0"
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
+        ></iframe>
+      </div>
+      <div className="page-button-container">
+        <div className="button-container">
+          <div className="div-container">
+            <Button type="primary" onClick={() => navigate('/signUp')}>
+              Management Company
+            </Button>
+            Sign-up as a Management Company to develop and trade carbon credits or ITMOs recognised
+            in the Commonwealth of The Bahamas
+          </div>
+          <div className="div-container">
+            <Button type="primary" onClick={() => navigate('/signupFrameView')}>
+              Domestic Reporting Entity
+            </Button>
+            Sign-up as a Domestic Reporting Entity to report activity data relating to greenhouse
+            gas emissions in the Commonwealth of The Bahamas
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
