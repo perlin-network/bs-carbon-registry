@@ -4,6 +4,22 @@ import { useNavigate } from 'react-router-dom';
 import UploadArea from './uploadArea';
 
 const gutter = 24;
+export const COMPANY_TYPE_OPTIONS = [
+  'Partnership',
+  'Privately Trading Companies',
+  'Publicly Trading Companies',
+  'Limited Liability Partnerships',
+  'Limited Liability Company',
+  'International Business Corporation',
+  'Exempted Limited Partnership',
+  'Foreign Companies',
+  'Sole-Proprietorships',
+  'Foundations',
+  'Non-governmental Organizations',
+  'Civil Society',
+  'Government Entity',
+  'Other',
+];
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -26,11 +42,12 @@ const SignUp = () => {
               </Col>
               <Col xs={24} md={12}>
                 <Form.Item label="Type of Company" name="companyType">
-                  <Select placeholder="Enter company type">
-                    <Select.Option value="Management Company">Management Company</Select.Option>
-                    <Select.Option value="National Reporting Entity">
-                      National Reporting Entity
-                    </Select.Option>
+                  <Select placeholder="Select company type">
+                    {COMPANY_TYPE_OPTIONS?.map((option) => (
+                      <Select.Option key={option} value={option}>
+                        {option}
+                      </Select.Option>
+                    ))}
                   </Select>
                 </Form.Item>
               </Col>
