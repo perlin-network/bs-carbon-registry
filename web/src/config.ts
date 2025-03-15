@@ -1,6 +1,6 @@
 const config = {
   environment: process.env.REACT_APP_ENV,
-  apiUrl: process.env.REACT_APP_BACKEND || 'http://localhost:3030/local',
+  apiUrl: process.env.REACT_APP_BACKEND || 'http://localhost:3000',
   startUrl: process.env.REACT_APP_STAT_URL,
   countryName: process.env.REACT_APP_COUNTRY_NAME || 'Bahamas',
   countryCode: process.env.REACT_APP_COUNTRY_CODE || 'BS',
