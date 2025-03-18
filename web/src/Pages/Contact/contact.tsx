@@ -37,8 +37,8 @@ const Contact = () => {
             <div className="section-column">
               <MapComponent
                 mapType={mapType}
-                center={[0, 0]}
-                zoom={4}
+                center={[24.0602762, -77.4731017]} // Bahamas coordinates
+                zoom={6}
                 height={350}
                 style="mapbox://styles/mapbox/streets-v11"
               ></MapComponent>
