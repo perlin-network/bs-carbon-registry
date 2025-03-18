@@ -37,7 +37,7 @@ const Contact = () => {
             <div className="section-column">
               <MapComponent
                 mapType={mapType}
-                center={[0, 0]}
+                center={[24.0602762,-77.4731017]}
                 zoom={4}
                 height={350}
                 style="mapbox://styles/mapbox/streets-v11"
