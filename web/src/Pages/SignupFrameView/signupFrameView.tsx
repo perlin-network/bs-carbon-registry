@@ -22,7 +22,7 @@ const SignupFrameView = () => {
           src={signupIframeUrl}
           style={{
             width: '100%',
-            height: '1300px',
+            height: '1450px',
             border: 'none',
             overflow: 'hidden',
           }}
