@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { Button, Col, Row } from 'antd';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
-import AboutUsJpg from '../../Assets/Images/home-about-us.jpg';
 
 const SigninFrameView = () => {
   const navigate = useNavigate();

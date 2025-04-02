@@ -3,7 +3,6 @@ import { Button, Col, Row } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
-import AboutUsJpg from '../../Assets/Images/home-about-us.jpg';
 import './signupSwitchView.scss';
 
 const SignupSwitchView = () => {
