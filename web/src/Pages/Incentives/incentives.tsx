@@ -1,5 +1,4 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import './incentives.scss';
 import HeroHeader from '../../Components/HeroHeader/HeroHeader';
 import BackgroundJpg from '../../Assets/Images/news-bg.jpg';
@@ -25,8 +24,6 @@ const IncentiveItem: React.FC<IncentiveItemProps> = ({ title, date, image }) => 
 );
 
 const Incentives = () => {
-  const navigate = useNavigate();
-
   return (
     <div className="incentive-container">
       <HeroHeader
@@ -43,9 +40,11 @@ const Incentives = () => {
           <div className="incentives-section">
             <h2 className="incentive-section-title">2025 Incentives</h2>
             <ul>
-              {incentives.map((item) => (
-                <IncentiveItem key={item.title} {...item} />
-              ))}
+              {incentives.length > 0 ? (
+                incentives.map((item) => <IncentiveItem key={item.title} {...item} />)
+              ) : (
+                <p>No incentives available at the moment.</p>
+              )}
             </ul>
           </div>
         </div>
