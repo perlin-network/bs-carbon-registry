@@ -194,7 +194,7 @@ const Faqs = () => {
 
   return (
     <div className="incentive-container">
-      <HeroHeader title="Faqs" breadcrumbs={['Faqs']} backgroundImage={BackgroundJpg} />
+      <HeroHeader title="FAQs" breadcrumbs={['FAQs']} backgroundImage={BackgroundJpg} />
       <div className="page-content">
         <div className="faq-container">
           <h1 className="faq-heading">Frequently Asked Questions (FAQs)</h1>
