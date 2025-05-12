@@ -16,6 +16,10 @@ const menuItems = [
     text: 'Incentives/Initiatives',
     link: '/incentives',
   },
+  {
+    text: 'Faqs',
+    link: '/faqs',
+  },
 ];
 
 const MenuIcon = () => (

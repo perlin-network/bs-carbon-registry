@@ -13,27 +13,22 @@ import {
   Popover,
   List,
   Typography,
-  Modal,
-  Button,
-  Form,
   Tooltip,
 } from 'antd';
 // import { CheckboxChangeEvent } from 'antd/lib/checkbox';
 import { CheckboxValueType } from 'antd/lib/checkbox/Group';
 import { DateTime } from 'luxon';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import ProfileIcon from '../../Components/ProfileIcon/profile.icon';
 import { useConnection } from '../../Context/ConnectionContext/connectionContext';
 import {
-  addCommSep,
   addCommSepRound,
   addSpaces,
   CompanyRole,
   CreditTransferStage,
   getCompanyBgColor,
-  getRetirementTypeString,
   getStageTransferEnumVal,
   getTransferStageTagType,
 } from '../../Definitions/InterfacesAndType/programme.definitions';
@@ -51,11 +46,6 @@ import { Role } from '../../Casl/enums/role.enum';
 import { ConfigurationSettingsType } from '../../Definitions/InterfacesAndType/settings.definitions';
 import { useSettingsContext } from '../../Context/SettingsContext/settingsContext';
 import { PauseCircle, PlayCircle } from 'react-bootstrap-icons';
-
-type CompanyInfo = {
-  name: string;
-  credit: number;
-};
 
 type PopupInfo = {
   title: string;
@@ -80,7 +70,7 @@ const CreditTransfer = () => {
   const [indeterminate, setIndeterminate] = useState(false);
   const [checkAll, setCheckAll] = useState(true);
 
-  const { post, get } = useConnection();
+  const { post } = useConnection();
   const [totalProgramme, setTotalProgramme] = useState<number>();
   const [dataFilter, setDataFilter] = useState<any>();
   const [loading, setLoading] = useState<boolean>(false);
@@ -95,10 +85,6 @@ const CreditTransfer = () => {
   const [modalVisible, setModalVisible] = useState<boolean>(false);
   const [selectedReq, setSelectedReq] = useState<ProgrammeTransfer>();
   const [popupInfo, setPopupInfo] = useState<PopupInfo>();
-  const [companiesInfo, setCompaniesInfo] = useState<CompanyInfo[]>();
-  const [totalComCredits, setTotalComCredits] = useState<number>(0);
-  const [companyIdsVal, setCompanyIdsVal] = useState<number[]>();
-  const [creditAmount, setCreditAmount] = useState<number>(0);
   const { isTransferFrozen, setTransferFrozen } = useSettingsContext();
 
   const onStatusQuery = async (checkedValues: CheckboxValueType[]) => {
@@ -119,7 +105,6 @@ const CreditTransfer = () => {
       value: checkedValues,
     });
   };
-  const [formModal] = Form.useForm();
   const { Search } = Input;
 
   const onCheckAllChange = (e: any) => {
@@ -241,7 +226,7 @@ const CreditTransfer = () => {
       console.log(response);
       message.open({
         type: 'success',
-        content: successText ? successText : successMsg,
+        content: successText ?? successMsg,
         duration: 3,
         style: { textAlign: 'right', marginRight: 15, marginTop: 10 },
       });
