@@ -17,7 +17,7 @@ const menuItems = [
     link: '/incentives',
   },
   {
-    text: 'Faqs',
+    text: 'FAQs',
     link: '/faqs',
   },
 ];
