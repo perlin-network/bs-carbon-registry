@@ -17,8 +17,8 @@ import { AuthController } from './auth.controller';
 import { ProgrammeController } from './programme.controller';
 import { UtilModule } from '../shared/util/util.module';
 import { SettingsController } from './settings.controller';
-import { ContactUsModule } from 'src/contact/contact-us.module';
-import { ContactUsController } from 'src/national-api/contact-us.controller';
+import { ContactUsModule } from '../shared/contact/contact-us.module';
+import { ContactUsController } from './contact-us.controller';
 
 @Module({
   imports: [

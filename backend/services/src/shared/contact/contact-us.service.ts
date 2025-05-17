@@ -1,6 +1,6 @@
 // contact-us.service.ts
 import { Injectable } from '@nestjs/common';
-import { ContactUsDto } from './dto/contact-us.dto';
+import { ContactUsDto } from '../dto/contact-us.dto';
 
 @Injectable()
 export class ContactUsService {
