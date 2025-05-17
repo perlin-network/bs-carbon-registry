@@ -97,14 +97,6 @@ jobs:
           echo "ARN2=$(aws lambda list-layer-versions --layer-name service-dependencies-${{ github.event.inputs.stage_name }}-2 --region us-east-1 --query 'LayerVersions[0].LayerVersionArn')" >> $GITHUB_OUTPUT
           echo "ARN_BLOCKCHAIN_LAYER=$(aws lambda list-layer-versions --layer-name blockchain-dependencies-${{ github.event.inputs.stage_name }} --region us-east-1 --query 'LayerVersions[0].LayerVersionArn')" >> $GITHUB_OUTPUT
         id: layerArn
-      - name: Deploy Serverless
-        run: |
-          echo "Deploying with:"
-          echo "Stage: ${{ github.event.inputs.stage_name }}"
-          echo "depLayerArn1: ${{ steps.layerArn.outputs.ARN1 }}"
-          echo "depLayerArn2: ${{ steps.layerArn.outputs.ARN2 }}"
-          echo "depLayerBlockchainArn: ${{ steps.layerArn.outputs.ARN_BLOCKCHAIN_LAYER }}"
-
       # - name: Build Serial Generator Package
       #   working-directory: ./libs/serial-number-gen
       #   run: yarn run build
