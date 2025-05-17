@@ -16,7 +16,8 @@ export const handler: Handler = async (event: any, context: Context) => {
    cachedServer = await bootstrapServer(
       cachedServer,
       NationalAPIModule,
-      httpBase);
+      httpBase,
+      env.STAGE);
 
    return proxy(cachedServer, event, context, 'PROMISE').promise;
 }
