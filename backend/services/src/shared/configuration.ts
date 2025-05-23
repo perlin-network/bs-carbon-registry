@@ -23,10 +23,10 @@ export default () => ({
     adminSecret: process.env.ADMIN_JWT_SECRET || "8654",
   },
   ledger: {
-    host: process.env.LEDGER_TYPE === 'PGSQL' 
-          ? process.env.DB_LEDGER_HOST  || 'bscarbondbprod.c0rjpojmhdkp.us-east-1.rds.amazonaws.com' 
-          : undefined,
-    name: process.env.LEDGER_TYPE === 'PGSQL' ?  `${process.env.DB_NAME}Events` : "bs-carbon-registry-" + (process.env.NODE_ENV || "prod"),
+    host: process.env.LEDGER_TYPE === 'PGSQL'
+      ? process.env.DB_LEDGER_HOST || 'bscarbondbprod.c0rjpojmhdkp.us-east-1.rds.amazonaws.com'
+      : undefined,
+    name: process.env.LEDGER_TYPE === 'PGSQL' ? `${process.env.DB_NAME}Events` : "bs-carbon-registry-" + (process.env.NODE_ENV || "prod"),
     table: "programmes",
     overallTable: "overall",
     companyTable: "company",
@@ -38,6 +38,8 @@ export default () => ({
   },
   email: {
     source: process.env.SOURCE_EMAIL || "admin@bioeconomy.co",
+    internalDomain: process.env.INTERNAL_DOMAIN || 'bahamas.gov.bs',
+    internalSender: process.env.INTERNAL_SENDER,
     endpoint:
       process.env.SMTP_ENDPOINT || "email-smtp.us-east-1.amazonaws.com",
     username: process.env.SMTP_USERNAME,

@@ -34,13 +34,14 @@ const binaryMimeTypes: string[] = [];
 function setupSwagger(
   nestApp: INestApplication,
   name: string,
-  httpBase: String
+  httpBase: string,
+  stage: string
 ): void {
   const config = new DocumentBuilder()
     .setTitle(`${name.replace("APIModule", " API")}`)
     .setDescription(
       `RESTful Web API Documentation.
-      <div id="links-header"><a target="_blank" href="https://github.com/perlin-network/carbon-registry">Github</a><a target="_blank" href="http://status.perlin.net">Status</a></div>`
+      <div id="links-header"><a target="_blank" href="https://github.com/perlin-network/bs-carbon-registry">Github</a><a target="_blank" href="https://bs-cr-api.perlin.net/${stage}/national/ping">Status</a></div>`
     )
     .setVersion("0.5")
     .addBearerAuth()
@@ -53,7 +54,7 @@ function setupSwagger(
   SwaggerModule.setup(`${httpBase}`, nestApp, document, {
     customSiteTitle: "API Documentation",
     customCss: `
-    .topbar-wrapper img {content:url(\'https://cr-perlin-common.s3.amazonaws.com/logo-h.png\'); height:50px; width:auto;}
+    .topbar-wrapper img {content:url(\'https://ner.bahamas.gov.bs/static/media/logo.1d4e6e6f04a4c394b087.png\'); height:50px; width:auto;}
     .swagger-ui .topbar { background-color: #f4f5fa; }
     .swagger-ui { background-color: white; }
     #links-header { position: absolute; top: 25px; right: calc((100% - 1440px)/2); }
@@ -91,6 +92,7 @@ export function getLogger(module) {
 export async function buildNestApp(
   module: any,
   httpBase: string,
+  stage: string,
   expressApp?: AbstractHttpAdapter
 ): Promise<NestExpressApplication> {
   const nestApp = await NestFactory.create<NestExpressApplication>(
@@ -112,18 +114,19 @@ export async function buildNestApp(
   );
   nestApp.useGlobalFilters(new ValidationExceptionFilter());
   nestApp.use(eventContext());
-  setupSwagger(nestApp, module.name, httpBase);
+  setupSwagger(nestApp, module.name, httpBase, stage);
   return nestApp;
 }
 
 export async function bootstrapServer(
   cachedServer: Server,
   module: any,
-  httpBase: string
+  httpBase: string,
+  stage: string
 ): Promise<Server> {
   if (!cachedServer) {
     const expressApp = express();
-    const nestApp = await buildNestApp(module, httpBase, expressApp);
+    const nestApp = await buildNestApp(module, httpBase, stage, expressApp);
     await nestApp.init();
     cachedServer = createServer(expressApp, undefined, binaryMimeTypes);
   }

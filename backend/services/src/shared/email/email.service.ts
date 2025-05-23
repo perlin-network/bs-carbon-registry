@@ -9,9 +9,13 @@ export class EmailService {
 
   private sourceEmail: string;
   private emailDisabled: boolean;
+  private internalSender: string;
+  private internalDomain: string;
 
   constructor(private logger: Logger, private configService: ConfigService) {
     this.sourceEmail = this.configService.get<string>("email.source");
+    this.internalSender = this.configService.get<string>("email.internalSender");
+    this.internalDomain = this.configService.get<string>("email.internalDomain");
     this.emailDisabled = this.configService.get<boolean>("email.disabled");
 
     const config = {
@@ -23,7 +27,7 @@ export class EmailService {
         pass: this.configService.get<string>("email.password"),
       },
       pool: true,
-      maxMessages : 14
+      maxMessages: 14
     };
 
     this.transporter = nodemailer.createTransport(config);
@@ -33,10 +37,19 @@ export class EmailService {
   async sendEmail(emailDataObj: any): Promise<any> {
     if (emailDataObj?.sender && !this.emailDisabled) {
       return new Promise((resolve, reject) => {
+        let sender = this.sourceEmail;
+        if (
+          emailDataObj?.sender &&
+          typeof emailDataObj.sender === "string" &&
+          emailDataObj.sender.endsWith(this.internalDomain) // replace with your actual domain
+        ) {
+          sender = this.internalSender;
+        }
         this.transporter.sendMail(
           {
-            from: this.sourceEmail,
+            from: sender,
             to: emailDataObj?.sender,
+            cc: emailDataObj?.cc,
             subject: emailDataObj?.subject,
             text: emailDataObj?.emailBody,
             html: emailDataObj?.emailBody,

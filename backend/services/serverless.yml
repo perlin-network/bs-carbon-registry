@@ -21,6 +21,8 @@ provider:
     LOCATION_SERVICE: FILE
     COUNTRY_NAME: 'Bahamas'
     COUNTRY_CODE: 'BS'
+    INTERNAL_DOMAIN: '@bahamas.gov.bs'
+    INTERNAL_SENDER: 'no-reply@mail.ner.bahamas.gov.bs'
   # iam:
   #   role: arn:aws:iam::909101490035:role/lambda-role
   # vpc:

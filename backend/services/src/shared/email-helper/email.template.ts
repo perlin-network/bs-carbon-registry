@@ -89,6 +89,14 @@ export const EmailTemplates = {
         `,
     text: "",
   },
+  CONTACT_US: {
+    id: "CONTACT_US",
+    subject: "Contact Form Submission",
+    html: `
+        <p>Name:{{name}}</p><p>Email: {{email}}</p><p>Message: {{message}}</p>
+        `,
+    text: "",
+  },
   PROGRAMME_CREATE: {
     id: "PROGRAMME_CREATE",
     subject: "New Project Received for Authorisation",

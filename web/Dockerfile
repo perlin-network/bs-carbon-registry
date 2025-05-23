@@ -1,3 +1,15 @@
+# Development and production multi-stage Dockerfile
+
+# ---------- Development Stage ----------
+FROM node:16-alpine as dev
+WORKDIR /app
+COPY ./web/package.json ./web/yarn.lock ./
+RUN yarn install
+COPY ./web .
+EXPOSE 3030
+CMD ["yarn", "start:dev"]
+
+# ---------- Production Stage ----------
 FROM node:16-alpine as build
 WORKDIR /app
 COPY ./web .
@@ -12,9 +24,6 @@ ENV REACT_APP_BACKEND $REACT_APP_BACKEND
 
 ARG REACT_APP_STAT_URL
 ENV REACT_APP_STAT_URL $REACT_APP_STAT_URL
-
-ARG REACT_APP_COUNTRY_NAME
-ENV REACT_APP_COUNTRY_NAME $REACT_APP_COUNTRY_NAME
 
 ARG REACT_APP_COUNTRY_NAME
 ENV REACT_APP_COUNTRY_NAME $REACT_APP_COUNTRY_NAME
