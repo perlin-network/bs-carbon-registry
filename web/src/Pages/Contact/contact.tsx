@@ -4,17 +4,17 @@ import HeroHeader from '../../Components/HeroHeader/HeroHeader';
 import BackgroundJpg from '../../Assets/Images/contact-bg.jpg';
 import MapComponent from '../../Components/Maps/MapComponent';
 import config from '../../config';
-import axios from 'axios';
+import { useConnection } from '../../Context/ConnectionContext/connectionContext';
 
 const mapType = config.mapType;
 const contactIframeUrl = config.iframurl + '/contact';
 
 const Contact = () => {
+  const { post } = useConnection();
+
   const onFinish = async (values: any) => {
     try {
-      const response = axios
-        .post('national/contact', values)
-
+      const response = await post('national/contact', values)
         .then((res) => console.log(res))
         .catch((err) => console.error(err));
 
