@@ -5,23 +5,26 @@ import BackgroundJpg from '../../Assets/Images/contact-bg.jpg';
 import MapComponent from '../../Components/Maps/MapComponent';
 import config from '../../config';
 import { useConnection } from '../../Context/ConnectionContext/connectionContext';
+import { useState } from 'react';
 
 const mapType = config.mapType;
 const contactIframeUrl = config.iframurl + '/contact';
 
 const Contact = () => {
+  const [loading, setLoading] = useState<boolean>(false);
   const { post } = useConnection();
 
   const onFinish = async (values: any) => {
     try {
-      const response = await post('national/contact', values)
-        .then((res) => console.log(res))
-        .catch((err) => console.error(err));
-
-      console.log(response, 'resp');
+      setLoading(true);
+      const response = await post('national/contact', values);
+      message.success('Message sent!');
+      console.log(response);
     } catch (err) {
       message.error('Error occurred');
       console.error(err);
+    } finally {
+      setLoading(false);
     }
   };
   return (
@@ -50,9 +53,11 @@ const Contact = () => {
                   <Input.TextArea placeholder="Your message..." rows={6} />
                 </Form.Item>
                 {/* Button triggers form submit */}
-                <Button type="primary" size="large" htmlType="submit">
-                  Send Message
-                </Button>
+                <div className="login-submit-btn-container">
+                  <Button type="primary" size="large" htmlType="submit" block loading={loading}>
+                    Send Message
+                  </Button>
+                </div>
               </Form>
               {/* <iframe
                 src={contactIframeUrl}
