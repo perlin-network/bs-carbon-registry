@@ -44,9 +44,9 @@ export default () => ({
       process.env.SMTP_ENDPOINT || "email-smtp.us-east-1.amazonaws.com",
     username: process.env.SMTP_USERNAME,
     password: process.env.SMTP_PASSWORD,
-    disabled: process.env.IS_EMAIL_DISABLED === "true" ? true : false,
+    disabled: process.env.IS_EMAIL_DISABLED === "true",
     disableLowPriorityEmails:
-      process.env.DISABLE_LOW_PRIORITY_EMAIL === "true" ? true : false,
+      process.env.DISABLE_LOW_PRIORITY_EMAIL === "true",
   },
   s3CommonBucket: {
     name: "bs-cr-perlin-common-" + (process.env.NODE_ENV || "prod"),

@@ -23,6 +23,8 @@ provider:
     COUNTRY_CODE: 'BS'
     INTERNAL_DOMAIN: '@bahamas.gov.bs'
     INTERNAL_SENDER: 'no-reply@mail.ner.bahamas.gov.bs'
+    DB_NAME: 'bscarbondb${self:provider.stage}'
+    DB_HOST: 'bscarbondb${self:provider.stage}.c0rjpojmhdkp.us-east-1.rds.amazonaws.com'
   # iam:
   #   role: arn:aws:iam::909101490035:role/lambda-role
   # vpc:
