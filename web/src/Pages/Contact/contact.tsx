@@ -12,6 +12,7 @@ const contactIframeUrl = config.iframurl + '/contact';
 
 const Contact = () => {
   const [loading, setLoading] = useState<boolean>(false);
+  const [form] = Form.useForm();
   const { post } = useConnection();
 
   const onFinish = async (values: any) => {
@@ -19,7 +20,7 @@ const Contact = () => {
       setLoading(true);
       const response = await post('national/contact', values);
       message.success('Message sent!');
-      console.log(response);
+      form.resetFields();
     } catch (err) {
       message.error('Error occurred');
       console.error(err);
@@ -35,7 +36,7 @@ const Contact = () => {
           <div className="section-row">
             <div className="section-column">
               <h2>Hello, Any Questions?</h2>
-              <Form name="contact" layout="vertical" onFinish={onFinish}>
+              <Form form={form} name="contact" layout="vertical" onFinish={onFinish}>
                 <Form.Item label="Name" name="name">
                   <Input placeholder="Enter your name" />
                 </Form.Item>
