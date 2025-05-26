@@ -18,6 +18,7 @@ export class EmailService {
     this.internalDomain = this.configService.get<string>("email.internalDomain");
     this.emailDisabled = this.configService.get<boolean>("email.disabled");
 
+    logger.log("EmailService initialized", 'EmailService', this.sourceEmail, this.internalSender, this.internalDomain, this.emailDisabled);
     const config = {
       host: this.configService.get<string>("email.endpoint"),
       port: 465,
@@ -29,9 +30,8 @@ export class EmailService {
       pool: true,
       maxMessages: 14
     };
-
-    this.transporter = nodemailer.createTransport(config);
     logger.log("Constructor initialized", 'EmailService', config);
+    this.transporter = nodemailer.createTransport(config);
   }
 
   async sendEmail(emailDataObj: any): Promise<any> {
