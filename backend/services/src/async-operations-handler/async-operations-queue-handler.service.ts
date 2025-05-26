@@ -19,7 +19,10 @@ export class AsyncOperationsQueueHandlerService
   async asyncHandler(event: SQSEvent): Promise<Response> {
     this.logger.log("[asyncHandler] Queue asyncHandler started");
     const response: Response = { batchItemFailures: [] };
-    this.logger.log("[asyncHandler] Queue asyncHandler records", event, event.Records);
+    this.logger.log(
+      `[asyncHandler] Queue asyncHandler records: event=${JSON.stringify(event)}, records=${JSON.stringify(event.Records)}`,
+      'AsyncOperationsQueueHandlerService'
+    );
     for (const record of event.Records) {
       const actionType = record.messageAttributes?.actionType?.stringValue;
       try {
