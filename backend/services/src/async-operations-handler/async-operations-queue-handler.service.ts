@@ -8,8 +8,7 @@ type Response = { batchItemFailures: { itemIdentifier: string }[] };
 
 @Injectable()
 export class AsyncOperationsQueueHandlerService
-  implements AsyncOperationsHandlerInterface
-{
+  implements AsyncOperationsHandlerInterface {
   constructor(
     private asyncOperationsHandlerService: AsyncOperationsHandlerService,
     private logger: Logger
@@ -20,11 +19,14 @@ export class AsyncOperationsQueueHandlerService
   async asyncHandler(event: SQSEvent): Promise<Response> {
     this.logger.log("[asyncHandler] Queue asyncHandler started");
     const response: Response = { batchItemFailures: [] };
-
+    this.logger.log(
+      `[asyncHandler] Queue asyncHandler records: event=${JSON.stringify(event)}, records=${JSON.stringify(event.Records)}`,
+      'AsyncOperationsQueueHandlerService'
+    );
     for (const record of event.Records) {
       const actionType = record.messageAttributes?.actionType?.stringValue;
       try {
-        
+
         await this.asyncOperationsHandlerService.handler(
           actionType,
           JSON.parse(record.body)

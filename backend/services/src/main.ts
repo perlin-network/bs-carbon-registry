@@ -41,7 +41,7 @@ async function bootstrap() {
         httpPath = "national";
     }
 
-    const app = await buildNestApp(module, "/" + httpPath);
+    const app = await buildNestApp(module, "/" + httpPath, process.env.STAGE);
     if (moduleName == "national-api") {
 
       if (fs.existsSync('organisations.csv') && fs.lstatSync('organisations.csv').isFile()) {

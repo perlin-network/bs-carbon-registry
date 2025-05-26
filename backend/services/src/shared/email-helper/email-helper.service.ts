@@ -384,6 +384,35 @@ export class EmailHelperService {
     });
   }
 
+  public async sendContactEmail(
+    template,
+    templateData: any,
+  ) {
+    if (this.isEmailDisabled) return;
+    const sender = this.configService.get("email.source");
+    const users = await this.userService.getGovAdminAndManagerUsers();
+    let cc = users.map(user => user.user_email);
+    const action: AsyncAction = {
+      actionType: AsyncActionType.Email,
+      actionProps: {
+        emailType: template.id,
+        sender: sender,
+        cc: cc,
+        subject: this.helperService.getEmailTemplateMessage(
+          template["subject"],
+          templateData,
+          true
+        ),
+        emailBody: this.helperService.getEmailTemplateMessage(
+          template["html"],
+          templateData,
+          false
+        ),
+      },
+    };
+    await this.asyncOperationsInterface.AddAction(action);
+  }
+  
   public async sendEmail(
     sender: string,
     template,

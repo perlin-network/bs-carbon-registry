@@ -9,11 +9,19 @@ export class EmailService {
 
   private sourceEmail: string;
   private emailDisabled: boolean;
+  private internalSender: string;
+  private internalDomain: string;
 
   constructor(private logger: Logger, private configService: ConfigService) {
     this.sourceEmail = this.configService.get<string>("email.source");
+    this.internalSender = this.configService.get<string>("email.internalSender");
+    this.internalDomain = this.configService.get<string>("email.internalDomain");
     this.emailDisabled = this.configService.get<boolean>("email.disabled");
 
+    logger.log(
+      `EmailService initialized: sourceEmail=${this.sourceEmail}, internalSender=${this.internalSender}, internalDomain=${this.internalDomain}, emailDisabled=${this.emailDisabled}`,
+      'EmailService'
+    );
     const config = {
       host: this.configService.get<string>("email.endpoint"),
       port: 465,
@@ -23,20 +31,31 @@ export class EmailService {
         pass: this.configService.get<string>("email.password"),
       },
       pool: true,
-      maxMessages : 14
+      maxMessages: 14
     };
-
+    logger.log(
+      `Constructor initialized: config=${JSON.stringify(config)}`,
+      'EmailService'
+    );
     this.transporter = nodemailer.createTransport(config);
-    logger.log("Constructor initialized", 'EmailService', config);
   }
 
   async sendEmail(emailDataObj: any): Promise<any> {
     if (emailDataObj?.sender && !this.emailDisabled) {
       return new Promise((resolve, reject) => {
+        let sender = this.sourceEmail;
+        if (
+          emailDataObj?.sender &&
+          typeof emailDataObj.sender === "string" &&
+          emailDataObj.sender.endsWith(this.internalDomain) // replace with your actual domain
+        ) {
+          sender = this.internalSender;
+        }
         this.transporter.sendMail(
           {
-            from: this.sourceEmail,
+            from: sender,
             to: emailDataObj?.sender,
+            cc: emailDataObj?.cc,
             subject: emailDataObj?.subject,
             text: emailDataObj?.emailBody,
             html: emailDataObj?.emailBody,

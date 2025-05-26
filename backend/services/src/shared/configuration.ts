@@ -23,10 +23,10 @@ export default () => ({
     adminSecret: process.env.ADMIN_JWT_SECRET || "8654",
   },
   ledger: {
-    host: process.env.LEDGER_TYPE === 'PGSQL' 
-          ? process.env.DB_LEDGER_HOST  || 'bscarbondbprod.c0rjpojmhdkp.us-east-1.rds.amazonaws.com' 
-          : undefined,
-    name: process.env.LEDGER_TYPE === 'PGSQL' ?  `${process.env.DB_NAME}Events` : "bs-carbon-registry-" + (process.env.NODE_ENV || "prod"),
+    host: process.env.LEDGER_TYPE === 'PGSQL'
+      ? process.env.DB_LEDGER_HOST || 'bscarbondbprod.c0rjpojmhdkp.us-east-1.rds.amazonaws.com'
+      : undefined,
+    name: process.env.LEDGER_TYPE === 'PGSQL' ? `${process.env.DB_NAME}Events` : "bs-carbon-registry-" + (process.env.NODE_ENV || "prod"),
     table: "programmes",
     overallTable: "overall",
     companyTable: "company",
@@ -38,13 +38,15 @@ export default () => ({
   },
   email: {
     source: process.env.SOURCE_EMAIL || "admin@bioeconomy.co",
+    internalDomain: process.env.INTERNAL_DOMAIN || 'bahamas.gov.bs',
+    internalSender: process.env.INTERNAL_SENDER,
     endpoint:
       process.env.SMTP_ENDPOINT || "email-smtp.us-east-1.amazonaws.com",
     username: process.env.SMTP_USERNAME,
     password: process.env.SMTP_PASSWORD,
-    disabled: process.env.IS_EMAIL_DISABLED === "true" ? true : false,
+    disabled: process.env.IS_EMAIL_DISABLED === "true",
     disableLowPriorityEmails:
-      process.env.DISABLE_LOW_PRIORITY_EMAIL === "true" ? true : false,
+      process.env.DISABLE_LOW_PRIORITY_EMAIL === "true",
   },
   s3CommonBucket: {
     name: "bs-cr-perlin-common-" + (process.env.NODE_ENV || "prod"),
@@ -59,7 +61,7 @@ export default () => ({
   },
   asyncQueueName:
     process.env.ASYNC_QUEUE_NAME ||
-    "https://sqs.us-east-1.amazonaws.com/909101490035/BSAsyncQueueprod.fifo",
+    "https://sqs.us-east-1.amazonaws.com/909101490035/BSAsyncQueuedev.fifo",
   ITMOSystem: {
     endpoint:
       process.env.ITMO_ENDPOINT ||
