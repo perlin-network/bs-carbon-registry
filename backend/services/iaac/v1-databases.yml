@@ -8,7 +8,7 @@ Resources:
       DBInstanceClass: db.t3.micro
       StorageType: gp2
       Engine: postgres
-      EngineVersion: '14.4'
+      EngineVersion: '14.12'
       MasterUsername: root
       MasterUserPassword: '{{resolve:ssm-secure:/${self:service}/${self:provider.stage}/DB_PASSWORD}}'
       PubliclyAccessible: True
@@ -22,7 +22,7 @@ Resources:
   #     DBInstanceClass: db.t3.micro
   #     StorageType: gp2
   #     Engine: postgres
-  #     EngineVersion: '14.4'
+  #     EngineVersion: '14.12'
   #     MasterUsername: root
   #     MasterUserPassword: ${env:DB_PASSWORD}
   #     PubliclyAccessible: True

@@ -53,6 +53,7 @@ services:
       CONTACT_EMAIL: countryx@email.com
       MINISTER_NAME_AND_DESIGNATION : "\nHonorable Minister X\nMinister\nMinistry of Environment, Forestry & Tourism"
     volumes:
+      - ./backend/services:/app/backend/services
       - filestore:/app/backend/services/public
       - ./users.csv:/app/backend/services/users.csv
       - ./organisations.csv:/app/backend/services/organisations.csv
@@ -72,6 +73,9 @@ services:
       RUN_PORT: 3100
       RUN_MODULE: analytics-api
       DOMAIN_MAP: "true"
+    volumes:
+      - ./backend/services:/app/backend/services
+      - filestore:/app/backend/services/public
   replicator:
     build:
       context: .
@@ -101,6 +105,7 @@ services:
       MRV_API_TOKEN: ''
       BACKEND_HOST: "http://192.168.1.16:3000"
     volumes:
+      - ./backend/services:/app/backend/services
       - filestore:/app/backend/services/public
   # async-operations-handler:
   #   build:
@@ -121,6 +126,7 @@ services:
     build:
       context: .
       dockerfile: ./web/Dockerfile
+      target: dev
       args:
         PORT: 3030
         REACT_APP_BACKEND: http://localhost:3000
@@ -135,3 +141,5 @@ services:
     depends_on:
       - db
       - national
+    volumes:
+      - ./web:/app

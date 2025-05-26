@@ -106,7 +106,7 @@ jobs:
       - name: serverless deploy
         uses: serverless/github-action@v3.1
         with:
-          args: -c "cd ./backend/services && serverless deploy --stage ${{ github.event.inputs.stage_name }} --param='depLayerArn1=${{ steps.layerArn.outputs.ARN1 }}' --param='depLayerArn2=${{ steps.layerArn.outputs.ARN2 }}' --param='depLayerBlockchainArn=${{ steps.layerArn.outputs.ARN_BLOCKCHAIN_LAYER }}'"
+          args: -c "cd ./backend/services && serverless deploy --stage ${{ github.event.inputs.stage_name }} --force --param='depLayerArn1=${{ steps.layerArn.outputs.ARN1 }}' --param='depLayerArn2=${{ steps.layerArn.outputs.ARN2 }}' --param='depLayerBlockchainArn=${{ steps.layerArn.outputs.ARN_BLOCKCHAIN_LAYER }}'"
           # args: -c "cd ./backend/services && serverless deploy --stage ${{ github.event.inputs.stage_name }} --param='depLayerArn1=${{ steps.layerArn.outputs.ARN1 }}' --param='depLayerArn2=${{ steps.layerArn.outputs.ARN2 }}'"
           entrypoint: /bin/sh
       # - name: Login to Amazon ECR

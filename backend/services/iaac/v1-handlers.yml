@@ -105,7 +105,7 @@ v1SetupHandler:
     - SMTP_USERNAME
     - SMTP_PASSWORD
   environment:
-    ASYNC_QUEUE_NAME: https://sqs.us-east-1.amazonaws.com/909101490035/BSAsyncQueueprod.fifo
+    ASYNC_QUEUE_NAME: https://sqs.us-east-1.amazonaws.com/909101490035/BSAsyncQueue${self:provider.stage}.fifo
   layers:
     - ${param:depLayerArn1}
     - ${param:depLayerArn2}
