@@ -61,7 +61,7 @@ export default () => ({
   },
   asyncQueueName:
     process.env.ASYNC_QUEUE_NAME ||
-    "https://sqs.us-east-1.amazonaws.com/909101490035/BSAsyncQueueprod.fifo",
+    "https://sqs.us-east-1.amazonaws.com/909101490035/BSAsyncQueuedev.fifo",
   ITMOSystem: {
     endpoint:
       process.env.ITMO_ENDPOINT ||
