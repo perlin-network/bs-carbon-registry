@@ -11,7 +11,7 @@ provider:
     FILE_SERVICE: 'S3'
     LOG_LEVEL: 'info'
     DOMAIN_MAP: 'false'
-    SOURCE_EMAIL: 'National Emission Registry <ner@bahamas.gov.bs>'
+    SOURCE_EMAIL: ${self:custom.sourceEmail.${self:provider.stage}}
     NODE_PATH: './:/opt/node_modules'
     STAGE: ${self:provider.stage}
     LEDGER_TYPE: QLDB #QLDB, PGSQL
@@ -62,6 +62,9 @@ functions:
   - ${file(./iaac/v1-handlers.yml)}
 
 custom:
+  sourceEmail:
+    dev: 'National Emission Registry Dev <shabnikkigoyal@gmail.com>'
+    prod: 'National Emission Registry <ner@bahamas.gov.bs>'
   customDomain: ${file(./iaac/gateway/dns.yml):customDomain}
   optimize:
     external: ["swagger-ui-dist"]
