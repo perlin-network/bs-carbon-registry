@@ -8,23 +8,25 @@ provider:
   environment:
     PROJECT_NAME: ${self:service}
     NODE_ENV: ${self:provider.stage}
-    FILE_SERVICE: 'S3'
-    LOG_LEVEL: 'info'
-    DOMAIN_MAP: 'false'
+    FILE_SERVICE: "S3"
+    LOG_LEVEL: "info"
+    DOMAIN_MAP: "false"
     SOURCE_EMAIL: ${self:custom.sourceEmail.${self:provider.stage}}
-    NODE_PATH: './:/opt/node_modules'
+    NODE_PATH: "./:/opt/node_modules"
     STAGE: ${self:provider.stage}
     LEDGER_TYPE: QLDB #QLDB, PGSQL
-    IS_EMAIL_DISABLED: 'false'
-    DISABLE_LOW_PRIORITY_EMAIL: 'false'
+    IS_EMAIL_DISABLED: "false"
+    DISABLE_LOW_PRIORITY_EMAIL: "false"
     ASYNC_OPERATIONS_TYPE: Queue
     LOCATION_SERVICE: FILE
-    COUNTRY_NAME: 'Bahamas'
-    COUNTRY_CODE: 'BS'
-    INTERNAL_DOMAIN: '@bahamas.gov.bs'
-    INTERNAL_SENDER: 'no-reply@mail.ner.bahamas.gov.bs'
-    DB_NAME: 'bscarbondb${self:provider.stage}'
-    DB_HOST: 'bscarbondb${self:provider.stage}.c0rjpojmhdkp.us-east-1.rds.amazonaws.com'
+    COUNTRY_NAME: "Bahamas"
+    COUNTRY_CODE: "BS"
+    INTERNAL_DOMAIN: "@bahamas.gov.bs"
+    INTERNAL_SENDER: "no-reply@mail.ner.bahamas.gov.bs"
+    DB_NAME: "bscarbondb${self:provider.stage}"
+    DB_HOST: "bscarbondb${self:provider.stage}.c0rjpojmhdkp.us-east-1.rds.amazonaws.com"
+    ASYNC_QUEUE_NAME: https://sqs.us-east-1.amazonaws.com/909101490035/BSAsyncQueue${self:provider.stage}.fifo
+
   # iam:
   #   role: arn:aws:iam::909101490035:role/lambda-role
   # vpc:
@@ -63,8 +65,8 @@ functions:
 
 custom:
   sourceEmail:
-    dev: 'National Emission Registry Dev <shabnikkigoyal@gmail.com>'
-    prod: 'National Emission Registry <ner@bahamas.gov.bs>'
+    dev: "National Emission Registry Dev <shabnikkigoyal@gmail.com>"
+    prod: "National Emission Registry <ner@bahamas.gov.bs>"
   customDomain: ${file(./iaac/gateway/dns.yml):customDomain}
   optimize:
     external: ["swagger-ui-dist"]
