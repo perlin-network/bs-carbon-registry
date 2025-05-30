@@ -412,7 +412,34 @@ export class EmailHelperService {
     };
     await this.asyncOperationsInterface.AddAction(action);
   }
-  
+
+
+    public async sendCreateUser(
+    template,
+    templateData: any,
+  ) {
+    if (this.isEmailDisabled) return;
+    const sender = this.configService.get("email.source");
+       const action: AsyncAction = {
+         actionType: AsyncActionType.Email,
+         actionProps: {
+           emailType: template.id,
+           sender: sender,
+           subject: this.helperService.getEmailTemplateMessage(
+              template["subject"],
+          templateData,
+          true
+           ),
+           emailBody: this.helperService.getEmailTemplateMessage(
+            template["html"],
+          templateData,
+          false
+           ),
+         },
+       };
+       await this.asyncOperationsInterface.AddAction(action);
+  }
+
   public async sendEmail(
     sender: string,
     template,

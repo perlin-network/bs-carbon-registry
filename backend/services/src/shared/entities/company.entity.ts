@@ -1,11 +1,12 @@
-import { BeforeInsert, Column, Entity, PrimaryColumn } from "typeorm";
+import { BeforeInsert, Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 import { CompanyRole } from "../enum/company.role.enum";
 import { CompanyState } from "../enum/company.state.enum";
 import { EntitySubject } from "./entity.subject";
+import { CompanyMeta } from "./companyMeta.entity";
 
 @Entity()
 export class Company implements EntitySubject {
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn('uuid')
   companyId: number;
 
   @Column({ unique: true, nullable: true })
@@ -72,6 +73,19 @@ export class Company implements EntitySubject {
 
   @Column({ type: "bigint", nullable: true })
   createdTime: number;
+
+  @Column({ nullable: true })
+  isManagementCompany?: boolean;
+
+  @Column({ nullable: true })
+  isCarbonCreditPurchaser?: boolean;
+
+  @Column({ nullable: true, length: 1000 })
+  writeSummary?: string;
+
+  @OneToOne(() => CompanyMeta, (meta) => meta.company)
+  companyMeta: CompanyMeta;
+
 
   @BeforeInsert()
   setDefaultState() {

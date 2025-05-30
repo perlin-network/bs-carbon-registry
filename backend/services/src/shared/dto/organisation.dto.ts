@@ -3,14 +3,12 @@ import {
   IsEmail,
   IsEnum,
   IsNotEmpty,
-  IsNumber,
   IsOptional,
   IsString,
   IsUrl,
   MaxLength,
   ValidateIf,
 } from "class-validator";
-import { Role } from "../casl/role.enum";
 import { CompanyRole } from "../enum/company.role.enum";
 import { IsValidCountry } from "../util/validcountry.decorator";
 

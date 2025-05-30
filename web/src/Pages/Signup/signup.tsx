@@ -2,31 +2,29 @@ import './signUp.scss';
 import { Button, Form, Input, Row, Col, Checkbox, Radio, Space, Select } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import UploadArea from './uploadArea';
+import { useConnection } from '../../Context/ConnectionContext/connectionContext';
+import { useEffect, useState } from 'react';
 
 const gutter = 24;
-export const COMPANY_TYPE_OPTIONS = [
-  'Partnership',
-  'Privately Trading Companies',
-  'Publicly Trading Companies',
-  'Limited Liability Partnerships',
-  'Limited Liability Company',
-  'International Business Corporation',
-  'Exempted Limited Partnership',
-  'Foreign Companies',
-  'Sole-Proprietorships',
-  'Foundations',
-  'Non-governmental Organizations',
-  'Civil Society',
-  'Government Entity',
-  'Other',
-];
-
 const SignUp = () => {
   const navigate = useNavigate();
-
+  const { get } = useConnection();
+  const [companyTypes, setCompanyTypes] = useState<any[]>([]);
+  const getCompanyTyes = async () => {
+    const response: any = await get('national/signup/company-types');
+    if (response?.data) {
+      setCompanyTypes(response.data);
+    } else {
+      console.error('Failed to fetch company types');
+    }
+  };
   const onFinish = (values: any) => {
     console.log('Received values of form: ', values);
   };
+
+  useEffect(() => {
+    getCompanyTyes();
+  }, []);
 
   return (
     <div className="sign-up">
@@ -43,9 +41,9 @@ const SignUp = () => {
               <Col xs={24} md={12}>
                 <Form.Item label="Type of Company" name="companyType">
                   <Select placeholder="Select company type">
-                    {COMPANY_TYPE_OPTIONS?.map((option) => (
-                      <Select.Option key={option} value={option}>
-                        {option}
+                    {companyTypes?.map((option) => (
+                      <Select.Option key={option.key} value={option.key}>
+                        {option.value}
                       </Select.Option>
                     ))}
                   </Select>

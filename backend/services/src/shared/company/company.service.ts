@@ -309,6 +309,7 @@ export class CompanyService {
       where: {
         companyId: companyId,
       },
+  relations: ['companyMeta'],  
     });
 
     this.logger.verbose('Found companies', 'findByCompanyId', companies);

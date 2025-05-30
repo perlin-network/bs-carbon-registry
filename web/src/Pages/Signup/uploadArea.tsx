@@ -1,5 +1,5 @@
 import './signUp.scss';
-import { message, Upload } from 'antd';
+import { message, Upload, UploadFile } from 'antd';
 
 const UploadIcon = () => (
   <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -12,33 +12,40 @@ const UploadIcon = () => (
     />
   </svg>
 );
+interface UploadAreaProps {
+  name?: string;
+  value?: UploadFile[];
+  onChange?: (files: UploadFile[]) => void;
+}
+const UploadArea = ({ name, value = [], onChange }: UploadAreaProps) => {
+  // const action = 'http://localhost:3000/national/create-management-company/submit';
 
-const UploadArea = (props: { name?: string }) => {
-  const action = 'https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188';
+  // const onDrop = (e: any) => {
+  //   console.log('Dropped files', e.dataTransfer.files);
+  // };
 
-  const onDrop = (e: any) => {
-    console.log('Dropped files', e.dataTransfer.files);
-  };
+  const handleChange = (info: { fileList: UploadFile[]; file: UploadFile }) => {
+    const fileList = info.fileList.slice(-1);
+    onChange?.(fileList);
 
-  const onChange = (info: any) => {
-    const { status } = info.file;
-    if (status !== 'uploading') {
-      console.log(info.file, info.fileList);
+    if (info.file.status === 'removed') {
+      message.info(`${info.file.name} removed.`);
     }
-    if (status === 'done') {
-      message.success(`${info.file.name} file uploaded successfully.`);
-    } else if (status === 'error') {
-      message.error(`${info.file.name} file upload failed.`);
-    }
+
+    // Send file objects up to parent for form submit usage
+    // if (props.onFilesChange) {
+    //   const actualFiles = files.map((file) => file.originFileObj).filter((f): f is RcFile => !!f);
+    //   props.onFilesChange(actualFiles);
+    // }
   };
 
   return (
     <Upload.Dragger
-      name={props.name}
-      action={action}
+      name={name}
+      beforeUpload={() => false} // Prevent auto upload
+      fileList={value}
+      onChange={handleChange}
       maxCount={1}
-      onDrop={onDrop}
-      onChange={onChange}
     >
       <div className="upload-icon">
         <UploadIcon />
