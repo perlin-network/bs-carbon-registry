@@ -222,7 +222,7 @@ export class CompanyService {
           {},
           user.companyId
         );
-      } 
+      }
       else {
         this.logger.warn(`Email ORG_REACTIVATION was not sent due to empty email for ${companyId}`, 'suspend');
       }
@@ -309,7 +309,7 @@ export class CompanyService {
       where: {
         companyId: companyId,
       },
-  relations: ['companyMeta'],  
+      relations: ['companyMeta'],
     });
 
     this.logger.verbose('Found companies', 'findByCompanyId', companies);
