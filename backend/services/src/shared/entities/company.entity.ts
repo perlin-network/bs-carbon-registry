@@ -2,7 +2,6 @@ import { BeforeInsert, Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryC
 import { CompanyRole } from "../enum/company.role.enum";
 import { CompanyState } from "../enum/company.state.enum";
 import { EntitySubject } from "./entity.subject";
-import { CompanyMeta } from "./companyMeta.entity";
 
 @Entity()
 export class Company implements EntitySubject {
@@ -82,10 +81,6 @@ export class Company implements EntitySubject {
 
   @Column({ nullable: true, length: 1000 })
   writeSummary?: string;
-
-  @OneToOne(() => CompanyMeta, (meta) => meta.company)
-  companyMeta?: CompanyMeta;
-
 
   @BeforeInsert()
   setDefaultState() {

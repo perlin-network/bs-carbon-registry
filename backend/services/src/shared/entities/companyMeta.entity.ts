@@ -57,10 +57,8 @@ export class CompanyMeta implements EntitySubject {
   @CreateDateColumn()
   createdAt: Date;
 
-  @OneToOne(() => Company, { nullable: false })
-  @JoinColumn() // optional if you want to specify the FK column name
-  company?: Company;
-
+  @Column()
+  companyId: number;
 
 //   @Column({ unique: true })
 // companyId: number;

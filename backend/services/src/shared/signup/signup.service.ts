@@ -114,7 +114,7 @@ export class SignupService {
       scientificExperience: uploadedFiles.scientificExperience || '',
       financialExpertise: uploadedFiles.financialExpertise || '',
       environmentalExpertise: uploadedFiles.environmentalExpertise || '',
-      company: company,
+      companyId: company.companyId,
     });
     await this.companyMetaRepo.save(meta);
     await this.emailHelperService.sendCreateUser(
