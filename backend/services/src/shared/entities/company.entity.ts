@@ -1,11 +1,11 @@
-import { BeforeInsert, Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
+import { BeforeInsert, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 import { CompanyRole } from "../enum/company.role.enum";
 import { CompanyState } from "../enum/company.state.enum";
 import { EntitySubject } from "./entity.subject";
 
 @Entity()
 export class Company implements EntitySubject {
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryGeneratedColumn() 
   companyId: number;
 
   @Column({ unique: true, nullable: true })

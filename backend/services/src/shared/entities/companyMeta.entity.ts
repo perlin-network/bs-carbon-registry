@@ -57,9 +57,6 @@ export class CompanyMeta implements EntitySubject {
   @CreateDateColumn()
   createdAt: Date;
 
-  @Column()
+  @Column({ nullable: true, unique: true }) 
   companyId: number;
-
-//   @Column({ unique: true })
-// companyId: number;
 }
