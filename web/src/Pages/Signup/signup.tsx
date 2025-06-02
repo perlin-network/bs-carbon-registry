@@ -13,7 +13,12 @@ const SignUp = () => {
   const getCompanyTyes = async () => {
     const response: any = await get('national/signup/company-types');
     if (response?.data) {
-      setCompanyTypes(response.data);
+      // Convert object to array of { key, value }
+      const mapped = Object.entries(response.data).map(([key, value]) => ({
+        key,
+        value,
+      }));
+      setCompanyTypes(mapped);
     } else {
       console.error('Failed to fetch company types');
     }
