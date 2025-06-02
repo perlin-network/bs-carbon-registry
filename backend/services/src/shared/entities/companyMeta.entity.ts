@@ -59,7 +59,7 @@ export class CompanyMeta implements EntitySubject {
 
   @OneToOne(() => Company, { nullable: false })
   @JoinColumn() // optional if you want to specify the FK column name
-  company: Company;
+  company?: Company;
 
 
 //   @Column({ unique: true })

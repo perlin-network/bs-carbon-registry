@@ -84,7 +84,7 @@ export class Company implements EntitySubject {
   writeSummary?: string;
 
   @OneToOne(() => CompanyMeta, (meta) => meta.company)
-  companyMeta: CompanyMeta;
+  companyMeta?: CompanyMeta;
 
 
   @BeforeInsert()
