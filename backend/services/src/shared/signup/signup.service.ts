@@ -61,7 +61,7 @@ export class SignupService {
         const fileArray = files[key];
         if (Array.isArray(fileArray) && fileArray.length > 0) {
           const file = fileArray[0];
-          if (file && file.mimetype) {
+          if (file?.mimetype) {
             const extension = file.mimetype.split('/')[1];
             const fileName = `company/${company.companyId}/${key}_${Date.now()}.${extension}`;
             const fileUrl = await this.fileHandler.uploadFile(

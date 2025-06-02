@@ -9,12 +9,13 @@ import { HelperService } from '../util/helpers.service';
 import { User } from '../entities/user.entity';
 import { AsyncOperationsModule } from '../async-operations/async-operations.module';
 import { EmailHelperModule } from '../email-helper/email-helper.module';
+import { Company } from '../entities/company.entity';
 
 
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([CompanyMeta,User]), // <--- add this line
+    TypeOrmModule.forFeature([CompanyMeta,User,Company]), 
     FileHandlerModule,
     CompanyModule,AsyncOperationsModule,EmailHelperModule
   ],
