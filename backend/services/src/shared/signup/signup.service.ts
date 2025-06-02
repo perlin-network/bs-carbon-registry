@@ -131,7 +131,7 @@ export class SignupService {
     };
   }
 
-  async getCompanyTypes(): Promise<string[]> {
-    return Object.values(CompanyType);
+  async getCompanyTypes(): Promise<{ [key: string]: string }> {
+    return { ...CompanyType };
   }
 }
