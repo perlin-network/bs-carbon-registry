@@ -6,17 +6,12 @@ import {
   Post,
   Body,
   Query,
-  Req,
   HttpException,
   HttpStatus,
   Delete,
   Put,
 } from "@nestjs/common";
 import { Action } from "../shared/casl/action.enum";
-import {
-  AppAbility,
-  CaslAbilityFactory,
-} from "../shared/casl/casl-ability.factory";
 import { CheckPolicies } from "../shared/casl/policy.decorator";
 import { PoliciesGuard, PoliciesGuardEx } from "../shared/casl/policy.guard";
 import { User } from "../shared/entities/user.entity";
@@ -37,9 +32,8 @@ import { ApiKeyJwtAuthGuard } from "../shared/auth/guards/api-jwt-key.guard";
 export class UserController {
   constructor(
     private readonly userService: UserService,
-    private caslAbilityFactory: CaslAbilityFactory,
-    private helperService: HelperService
-  ) {}
+    private readonly helperService: HelperService
+  ) { }
 
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)

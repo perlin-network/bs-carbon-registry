@@ -32,7 +32,7 @@ const SignUp = () => {
     setLoading(true);
     formData.append('nameOfCompany', values.companyName);
     formData.append('typeOfCompany', values.companyType);
-    formData.append('companyWebsite', values.companyWebsite);
+    formData.append('companyWebsite', values.companyWebsite || '');
     formData.append('companyAddress', values.companyAddress);
     formData.append('isMainCorrespondence', values.isMainAddress || 'false');
     formData.append('mainCorrespondenceAddress', values.correspondenceAddress || '');
