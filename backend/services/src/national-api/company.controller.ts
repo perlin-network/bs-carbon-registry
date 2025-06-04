@@ -16,7 +16,6 @@ import { Action } from "../shared/casl/action.enum";
 import { PoliciesGuardEx } from "../shared/casl/policy.guard";
 import { QueryDto } from "../shared/dto/query.dto";
 import { CompanyService } from "../shared/company/company.service";
-import { CaslAbilityFactory } from "../shared/casl/casl-ability.factory";
 import { JwtAuthGuard } from "../shared/auth/guards/jwt-auth.guard";
 import { OrganisationSuspendDto } from "../shared/dto/organisation.suspend.dto";
 import { FindOrganisationQueryDto } from "../shared/dto/find.organisation.dto";
@@ -31,8 +30,7 @@ export class CompanyController {
   constructor(
     private readonly companyService: CompanyService,
     private readonly countryService: CountryService,
-    private caslAbilityFactory: CaslAbilityFactory,
-    private helperService: HelperService
+    private readonly helperService: HelperService
   ) {}
 
   @ApiBearerAuth()

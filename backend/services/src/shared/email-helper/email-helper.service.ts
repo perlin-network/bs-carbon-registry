@@ -11,6 +11,7 @@ import { AsyncActionType } from "../enum/async.action.type.enum";
 import { ProgrammeLedgerService } from "../programme-ledger/programme-ledger.service";
 import { UserService } from "../user/user.service";
 import { HelperService } from "../util/helpers.service";
+import { EmailTemplates } from "./email.template";
 
 @Injectable()
 export class EmailHelperService {
@@ -412,7 +413,85 @@ export class EmailHelperService {
     };
     await this.asyncOperationsInterface.AddAction(action);
   }
-  
+
+
+  public async sendCreateUser(
+    template,
+    templateData: any,
+  ) {
+    if (this.isEmailDisabled) return;
+    if (templateData.companyEmail) {
+      const compData = {
+        organisationName: templateData.companyName,
+        countryName: templateData.countryName,
+        organisationRole: templateData.companyRole,
+        home: templateData.home,
+      };
+
+      const compAction: AsyncAction = {
+        actionType: AsyncActionType.Email,
+        actionProps: {
+          emailType: EmailTemplates.ORGANISATION_CREATE.id,
+          sender: templateData.companyEmail,
+          subject: this.helperService.getEmailTemplateMessage(
+            EmailTemplates.ORGANISATION_CREATE["subject"],
+            compData,
+            true
+          ),
+          emailBody: this.helperService.getEmailTemplateMessage(
+            EmailTemplates.ORGANISATION_CREATE["html"],
+            compData,
+            false
+          ),
+        },
+      };
+      await this.asyncOperationsInterface.AddAction(compAction);
+
+      //send email to government admins
+      const sender = this.configService.get("email.source");
+      const users = await this.userService.getGovAdminAndManagerUsers();
+      let cc = users.map(user => user.user_email);
+      const action: AsyncAction = {
+        actionType: AsyncActionType.Email,
+        actionProps: {
+          emailType: EmailTemplates.ORGANISATION_CREATE_ADMIN.id,
+          sender: sender,
+          cc: cc,
+          subject: this.helperService.getEmailTemplateMessage(
+            template["subject"],
+            templateData,
+            true
+          ),
+          emailBody: this.helperService.getEmailTemplateMessage(
+            template["html"],
+            templateData,
+            false
+          ),
+        },
+      };
+      await this.asyncOperationsInterface.AddAction(action);
+    }
+    const action: AsyncAction = {
+      actionType: AsyncActionType.Email,
+      actionProps: {
+        emailType: template.id,
+        sender: template.email,
+        subject: this.helperService.getEmailTemplateMessage(
+          template["subject"],
+          templateData,
+          true
+        ),
+        emailBody: this.helperService.getEmailTemplateMessage(
+          template["html"],
+          templateData,
+          false
+        ),
+      },
+    };
+    await this.asyncOperationsInterface.AddAction(action);
+  }
+
+
   public async sendEmail(
     sender: string,
     template,

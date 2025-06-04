@@ -1,4 +1,18 @@
 export const EmailTemplates = {
+  ORGANISATION_CREATE_ADMIN: {
+    id: "ORGANISATION_CREATE_ADMIN",
+    subject: "Bahamas National Emission Registry Approval",
+    html: `
+        Dear Admin,<br><br>
+        New company is register to operate as a Management Company in the Commonwealth of The Bahamas. Please check details <br><br>
+        Company Name: {{organisationName}}. <br>
+        Company Role: {{organisationRole}}. 
+        <br><br>
+
+        Sincerely,<br>
+        The Bahamas National Emission Registry Team
+        `,
+  },
   ORGANISATION_CREATE: {
     id: "ORGANISATION_CREATE",
     subject: "Bahamas National Emission Registry Approval",

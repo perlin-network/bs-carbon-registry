@@ -32,11 +32,13 @@ import { SystemActionType } from "../enum/system.action.type";
 import { FileHandlerInterface } from "../file-handler/filehandler.interface";
 import { CounterType } from "../util/counter.type.enum";
 import { CounterService } from "../util/counter.service";
+import { CompanyMeta } from "../entities/companyMeta.entity";
 
 @Injectable()
 export class CompanyService {
   constructor(
     @InjectRepository(Company) private companyRepo: Repository<Company>,
+   @InjectRepository(CompanyMeta) private companyMetaRepo: Repository<CompanyMeta>,
     private logger: Logger,
     private configService: ConfigService,
     private helperService: HelperService,
@@ -222,7 +224,7 @@ export class CompanyService {
           {},
           user.companyId
         );
-      } 
+      }
       else {
         this.logger.warn(`Email ORG_REACTIVATION was not sent due to empty email for ${companyId}`, 'suspend');
       }
@@ -309,8 +311,15 @@ export class CompanyService {
       where: {
         companyId: companyId,
       },
+      //relations: ['companyMeta'],
     });
-
+    const companyMeta = await this.companyMetaRepo.find({
+      where: {
+        companyId: companyId,
+      }});
+    if (companyMeta && companyMeta.length > 0) {
+      (companies[0] as any)['companyMeta'] = companyMeta[0];
+    }
     this.logger.verbose('Found companies', 'findByCompanyId', companies);
     return companies && companies.length > 0 ? companies[0] : undefined;
   }

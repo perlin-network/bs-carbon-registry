@@ -11,6 +11,7 @@ import { ProgrammeLedgerModule } from "../programme-ledger/programme-ledger.modu
 import { ProgrammeTransfer } from "../entities/programme.transfer";
 import { EmailHelperModule } from "../email-helper/email-helper.module";
 import { FileHandlerModule } from "../file-handler/filehandler.module";
+import { CompanyMeta } from "../entities/companyMeta.entity";
 
 @Module({
   imports: [
@@ -23,7 +24,7 @@ import { FileHandlerModule } from "../file-handler/filehandler.module";
       useClass: TypeOrmConfigService,
       imports: undefined,
     }),
-    TypeOrmModule.forFeature([Company, ProgrammeTransfer]),
+    TypeOrmModule.forFeature([Company, ProgrammeTransfer, CompanyMeta]),
     CaslModule,
     UtilModule,
     forwardRef(() => ProgrammeLedgerModule),

@@ -165,12 +165,11 @@ export class UserService {
       .update(User)
       .set(update)
       .where(
-        `id = ${id} ${
-          abilityCondition
-            ? " AND (" +
-              this.helperService.parseMongoQueryToSQL(abilityCondition) +
-              ")"
-            : ""
+        `id = ${id} ${abilityCondition
+          ? " AND (" +
+          this.helperService.parseMongoQueryToSQL(abilityCondition) +
+          ")"
+          : ""
         }`
       )
       .execute()
@@ -201,11 +200,10 @@ export class UserService {
     const user = await this.userRepo
       .createQueryBuilder()
       .where(
-        `id = '${id}' ${
-          abilityCondition
-            ? " AND (" +
-              this.helperService.parseMongoQueryToSQL(abilityCondition) + ")"
-            : ""
+        `id = '${id}' ${abilityCondition
+          ? " AND (" +
+          this.helperService.parseMongoQueryToSQL(abilityCondition) + ")"
+          : ""
         }`
       )
       .addSelect(["User.password"])
@@ -275,11 +273,10 @@ export class UserService {
     const user = await this.userRepo
       .createQueryBuilder()
       .where(
-        `email = '${email}' ${
-          abilityCondition
-            ? " AND (" +
-              this.helperService.parseMongoQueryToSQL(abilityCondition) + ")"
-            : ""
+        `email = '${email}' ${abilityCondition
+          ? " AND (" +
+          this.helperService.parseMongoQueryToSQL(abilityCondition) + ")"
+          : ""
         }`
       )
       .getOne();
@@ -403,9 +400,9 @@ export class UserService {
   ): Promise<User | DataResponseMessageDto | undefined> {
     this.logger.verbose(`[create] User create received  ${userDto.email} ${companyId}`);
     userDto.email = userDto.email?.toLowerCase();
-    const createdUserDto = {...userDto};
-    if(userDto.company){
-      createdUserDto.company={...userDto.company}
+    const createdUserDto = { ...userDto };
+    if (userDto.company) {
+      createdUserDto.company = { ...userDto.company }
     }
     const user = await this.findOne(userDto.email);
     if (user) {
@@ -659,7 +656,7 @@ export class UserService {
         this.helperService.formatReqMessagesString("user.createUserSuccess", []),
         resp
       );
-    
+
       console.info('[create] Final Response %j', response);
       return response;
     } catch (err) {
@@ -670,13 +667,12 @@ export class UserService {
           case PG_UNIQUE_VIOLATION:
             if (err.driverError.detail.includes("email")) {
               throw new HttpException(
-                `${
-                  err.driverError.table == "company"
-                    ? this.helperService.formatReqMessagesString(
-                        "user.orgEmailExist",
-                        []
-                      )
-                    : "Email already exist"
+                `${err.driverError.table == "company"
+                  ? this.helperService.formatReqMessagesString(
+                    "user.orgEmailExist",
+                    []
+                  )
+                  : "Email already exist"
                 }`,
                 HttpStatus.BAD_REQUEST
               );
@@ -738,10 +734,9 @@ export class UserService {
     const result = await this.userRepo
       .createQueryBuilder()
       .where(
-        `id = '${userId}' ${
-          ability
-            ? ` AND (${this.helperService.parseMongoQueryToSQL(ability)})`
-            : ""
+        `id = '${userId}' ${ability
+          ? ` AND (${this.helperService.parseMongoQueryToSQL(ability)})`
+          : ""
         }`
       )
       .getMany();
