@@ -451,7 +451,7 @@ export class EmailHelperService {
       const sender = this.configService.get("email.source");
       const users = await this.userService.getGovAdminAndManagerUsers();
       let cc = users.map(user => user.user_email);
-      const action: AsyncAction = {
+      const adminAction: AsyncAction = {
         actionType: AsyncActionType.Email,
         actionProps: {
           emailType: EmailTemplates.ORGANISATION_CREATE_ADMIN.id,
@@ -469,7 +469,7 @@ export class EmailHelperService {
           ),
         },
       };
-      await this.asyncOperationsInterface.AddAction(action);
+      await this.asyncOperationsInterface.AddAction(adminAction);
     }
     const action: AsyncAction = {
       actionType: AsyncActionType.Email,
