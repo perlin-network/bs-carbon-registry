@@ -89,13 +89,20 @@ export class SignupService {
     });
 
     await this.userRepo.save(user);
+    const hostAddress = this.configService.get("host");
+
     const templateData = {
       name: user.name,
       email: user.email,
-      password: user.password,
+      countryName: this.configService.get("systemCountryName"),
       companyName: companyData.name,
+      tempPassword: user.password,
+      home: hostAddress,
+      liveChat: this.configService.get("liveChat"),
+      helpDoc: hostAddress + "/help",
+      CompanyRole: companyData.companyRole,
+      companyEmail: companyData.email,
     };
-
 
 
     // ✅ Create a new CompanyMeta entity from formData
@@ -121,6 +128,7 @@ export class SignupService {
       EmailTemplates.USER_CREATE,
       templateData
     );
+    
     return {
       message: 'Form submitted successfully!',
       data: {
