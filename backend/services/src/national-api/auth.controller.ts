@@ -1,14 +1,8 @@
 import {
   Controller,
-  Get,
   Post,
-  UseGuards,
   Request,
-  Logger,
   Body,
-  ValidationPipe,
-  UnauthorizedException,
-  Req,
   Put,
   Query,
   HttpException,
@@ -17,8 +11,6 @@ import {
 import { ApiTags } from "@nestjs/swagger";
 import { LoginDto } from "../shared/dto/login.dto";
 import { AuthService } from "../shared/auth/auth.service";
-import { JwtAuthGuard } from "../shared/auth/guards/jwt-auth.guard";
-import { LocalAuthGuard } from "../shared/auth/guards/local-auth.guard";
 import { ForgotPasswordDto } from "../shared/dto/forgotPassword.dto";
 import { PasswordResetDto } from "../shared/dto/passwordReset.dto";
 import { PasswordResetService } from "../shared/util/passwordReset.service";
@@ -30,7 +22,7 @@ export class AuthController {
   constructor(
     private readonly authService: AuthService,
     private readonly passwordResetService: PasswordResetService,
-    private helperService: HelperService,
+    private readonly helperService: HelperService,
   ) {}
 
   @Post("login")

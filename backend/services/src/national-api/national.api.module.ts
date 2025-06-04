@@ -19,6 +19,8 @@ import { UtilModule } from '../shared/util/util.module';
 import { SettingsController } from './settings.controller';
 import { ContactUsModule } from '../shared/contact/contact-us.module';
 import { ContactUsController } from './contact-us.controller';
+import { SignupController } from './signup.controller';
+import { SignupModule } from 'src/shared/signup/signup.module';
 
 @Module({
   imports: [
@@ -37,9 +39,10 @@ import { ContactUsController } from './contact-us.controller';
     CaslModule,
     ProgrammeModule,
     CompanyModule,
+    SignupModule,
     UtilModule
   ],
-  controllers: [NationalAPIController, ContactUsController, UserController, AuthController, CompanyController, ProgrammeController, SettingsController],
+  controllers: [NationalAPIController, ContactUsController, UserController, AuthController, CompanyController, ProgrammeController, SettingsController, SignupController],
   providers: [
     NationalAPIService,
     Logger
