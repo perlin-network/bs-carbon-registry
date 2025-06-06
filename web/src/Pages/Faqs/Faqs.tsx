@@ -15,7 +15,7 @@ const faqs: FAQ[] = [
       <p>
         The National Emissions Registry, or the NER, is a Unit within the Office of the Prime
         Minister. The NER is responsible for maintaining a register of emissions reductions, as well
-        as issuing emission allocations, and developing emission reduction initiatives and
+        as issuing emissions allocations, and developing emissions reduction initiatives and
         incentives for The Bahamas. The complete functions of the NER can be found under Part VII of
         the{' '}
         <a
@@ -31,7 +31,7 @@ const faqs: FAQ[] = [
           target="_blank"
           className="text-blue-600 underline"
         >
-          Emission Reduction Initiatives and Incentives Regulations, 2025
+          Emissions Reduction Initiatives and Incentives Regulations, 2025
         </a>
         .
       </p>
@@ -52,10 +52,10 @@ const faqs: FAQ[] = [
     ),
   },
   {
-    question: 'What are the Emission Reduction Initiatives and Incentives Regulations, 2025?',
+    question: 'What are the Emissions Reduction Initiatives and Incentives Regulations, 2025?',
     answer: (
       <p>
-        The Emission Reduction Initiatives and Incentives Regulations, 2025 were developed to
+        The Emissions Reduction Initiatives and Incentives Regulations, 2025 were developed to
         support The Bahamas’{' '}
         <a
           href="https://faolex.fao.org/docs/pdf/bha211771.pdf"
@@ -68,7 +68,7 @@ const faqs: FAQ[] = [
         30% and increasing renewable energy by 30% by the year 2030. <br />
         <br />
         The Regulations will also support the Government and private sector in recording relevant
-        data for GHG emissions and implementing effective emission reduction initiatives and
+        data for GHG emissions and implementing effective emissions reduction initiatives and
         incentives.
         <br />
         <a
@@ -83,18 +83,18 @@ const faqs: FAQ[] = [
     ),
   },
   {
-    question: 'What is an emission reduction initiative?',
+    question: 'What is an emissions reduction initiative?',
     answer: (
       <p>
-        An emission reduction initiative is a program designed to help reduce an entity’s greenhouse
+        An emissions reduction initiative is a program designed to help reduce an entity’s greenhouse
         gas emissions and improve sustainability. Participants in these initiatives may also qualify
-        for emission reduction incentives. You can either participate in a Government-led emission
+        for emissions reduction incentives. You can either participate in a Government-led emission
         reduction initiative or propose your own.
         <br />
         <br />
         To participate and receive benefits, individuals or entities must make an application to the
         National Emissions Registry. This ensures that the Registry fulfills its function in
-        recording emission reduction initiatives throughout the country.
+        recording emissions reduction initiatives throughout the country.
       </p>
     ),
   },
@@ -102,7 +102,7 @@ const faqs: FAQ[] = [
     question: 'How do I access incentives?',
     answer: (
       <p>
-        You will need an emission reduction initiative permit. Applications can be made through the
+        You will need an emissions reduction initiative permit. Applications can be made through the
         National Emissions Registry Portal.
       </p>
     ),
@@ -140,7 +140,7 @@ const faqs: FAQ[] = [
             target="_blank"
             className="text-blue-600 underline"
           >
-            Emission Reduction Initiatives and Incentives Regulations, 2025
+            Emissions Reduction Initiatives and Incentives Regulations, 2025
           </a>
           ,{' '}
         </em>
@@ -171,28 +171,28 @@ const faqs: FAQ[] = [
           target="_blank"
           className="text-blue-600 underline"
         >
-          Emission Reduction Initiatives and Incentives Regulations, 2025
+          Emissions Reduction Initiatives and Incentives Regulations, 2025
         </a>
         .
       </p>
     ),
   },
   {
-    question: 'What is an emission allocation?',
+    question: 'What is an emissions allocation?',
     answer: (
       <p>
-        An emission allocation is an allowance that will be assigned to high-emitting entities
+        An emissions allocation is an allowance that will be assigned to high-emitting entities
         through a permit. This allowance gives a limit on the amount of emissions an entity can emit
         within a designated time period. Allowances may be canceled.
       </p>
     ),
   },
   {
-    question: 'What happens if an entity exceeds its emission allocation target?',
+    question: 'What happens if an entity exceeds its emissions allocation target?',
     answer: (
       <p>
-        Where an entity exceeds the emission allocation specified in its permit, the entity commits
-        an offence and is liable to a fine. If an entity does not meet its emission allocation
+        Where an entity exceeds the emissions allocation specified in its permit, the entity commits
+        an offence and is liable to a fine. If an entity does not meet its emissions allocation
         target that entity may be subject to a fine.
       </p>
     ),
@@ -202,7 +202,7 @@ const faqs: FAQ[] = [
     answer: (
       <p>
         There are many ways that an entity can reduce its emissions to be more sustainable or to
-        meet its emission allowance. This may involve adopting new or existing renewable energy
+        meet its emissions allowance. This may involve adopting new or existing renewable energy
         technologies, improving energy efficiency, or implementing more sustainable practices. If
         you need any assistance, you can contact the National Emissions Registry directly at{' '}
         <a href="mailto:ner@bahamas.gov.bs" className="text-blue-600 underline">

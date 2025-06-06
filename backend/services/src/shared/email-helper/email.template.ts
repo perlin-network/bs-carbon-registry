@@ -1,7 +1,7 @@
 export const EmailTemplates = {
   ORGANISATION_CREATE_ADMIN: {
     id: "ORGANISATION_CREATE_ADMIN",
-    subject: "Bahamas National Emission Registry Approval",
+    subject: "Bahamas National Emissions Registry Approval",
     html: `
         Dear Admin,<br><br>
         New company is register to operate as a Management Company in the Commonwealth of The Bahamas. Please check details <br><br>
@@ -10,24 +10,24 @@ export const EmailTemplates = {
         <br><br>
 
         Sincerely,<br>
-        The Bahamas National Emission Registry Team
+        The Bahamas National Emissions Registry Team
         `,
   },
   ORGANISATION_CREATE: {
     id: "ORGANISATION_CREATE",
-    subject: "Bahamas National Emission Registry Approval",
+    subject: "Bahamas National Emissions Registry Approval",
     html: `
         Dear {{organisationName}},<br><br>
         Your company has received authorization to operate as a Management Company in the Commonwealth of The Bahamas.  Your admin profile is ready for use. Please find login details below. Please note that your Certificate of Authorisation has been uploaded to you user profile on the Registry. <br><br>
         Explore the Registry here {{home}}. <br><br>
 
         Sincerely,<br>
-        The Bahamas National Emission Registry Team
+        The Bahamas National Emissions Registry Team
         `,
   },
   USER_CREATE: {
     id: "USER_CREATE",
-    subject: "Account creation The Bahamas National Emission Registry",
+    subject: "Account creation The Bahamas National Emissions Registry",
     html: `
         Dear {{name}}, <br><br>
 
@@ -41,20 +41,20 @@ export const EmailTemplates = {
         <br><br>
 
         Sincerely, <br>
-        The Bahamas National Emission Registry Team
+        The Bahamas National Emissions Registry Team
         `,
     text: "",
   },
   API_KEY_EMAIL: {
     id: "API_KEY_EMAIL",
-    subject: "The Bahamas National Emission Registry API Key Generation",
+    subject: "The Bahamas National Emissions Registry API Key Generation",
     html: `
         Hi {{name}},<br><br>
 
-        Your National Emission Registry account api key regenerated  - {{apiKey}}.
+        Your National Emissions Registry account api key regenerated  - {{apiKey}}.
         <br><br>
         Sincerely,<br>
-        The Bahamas National Emission Registry Team
+        The Bahamas National Emissions Registry Team
     `,
     text: "",
   },
@@ -67,7 +67,7 @@ export const EmailTemplates = {
 
         <br><br>
         Sincerely,<br>
-        The Bahamas National Emission Registry Team
+        The Bahamas National Emissions Registry Team
         `,
     text: "",
   },
@@ -76,10 +76,10 @@ export const EmailTemplates = {
     subject: "Your Password was Changed",
     html: `
         Dear {{name}},<br><br>
-        This email serves to notify you that your password for the National Emission Registry was successfully changed. If you did not request this change, please click here.
+        This email serves to notify you that your password for the National Emissions Registry was successfully changed. If you did not request this change, please click here.
         <br><br>
         Sincerely, <br>
-        The Bahamas National Emission Registry Team
+        The Bahamas National Emissions Registry Team
         `,
     text: "",
   },
@@ -88,18 +88,18 @@ export const EmailTemplates = {
     subject: "Password Reset Request",
     html: `
         Dear {{name}},<br><br>
-        We received a request to reset your National Emission Registry password. <br><br>
+        We received a request to reset your National Emissions Registry password. <br><br>
         Use the link below to set a new password for your account. This password reset is only valid for the next hour.
         <br><br>
 
         <a href="{{home}}/resetPassword/{{requestId}}">Click here to reset the password</a>
         <br><br>
 
-        If you do not use The Bahamas National Emission Registry or did not request a password reset, please ignore this email.
+        If you do not use The Bahamas National Emissions Registry or did not request a password reset, please ignore this email.
 
         <br><br>
         Sincerely, <br>
-        The Bahamas National Emission Registry Team
+        The Bahamas National Emissions Registry Team
         `,
     text: "",
   },
@@ -123,7 +123,7 @@ export const EmailTemplates = {
         <br><br>
 
         Sincerely,  <br>
-        The Bahamas National Emission Registry Team
+        The Bahamas National Emissions Registry Team
         `,
   },
   PROGRAMME_AUTHORISATION: {
@@ -139,7 +139,7 @@ export const EmailTemplates = {
         <br><br>
 
         Sincerely,  <br>
-        The Bahamas National Emission Registry Team
+        The Bahamas National Emissions Registry Team
         `,
   },
   PROGRAMME_REJECTION: {
@@ -154,7 +154,7 @@ export const EmailTemplates = {
         Click <a href="{{pageLink}}">here</a> for more details of the programme.<br><br>
 
         Sincerely, <br>
-        The Bahamas National Emission Registry Team
+        The Bahamas National Emissions Registry Team
         `,
   },
   CREDIT_ISSUANCE: {
@@ -168,7 +168,7 @@ export const EmailTemplates = {
         Click <a href="{{pageLink}}">here</a> for more details of the project.<br><br>
 
         Sincerely, <br>
-        The Bahamas National Emission Registry Team
+        The Bahamas National Emissions Registry Team
         `,
   },
   CREDIT_TRANSFER_REQUISITIONS: {
@@ -181,7 +181,7 @@ export const EmailTemplates = {
         Click <a href="{{pageLink}}">here</a> for more details of the transfer request.<br><br>
 
         Sincerely, <br>
-        The Bahamas National Emission Registry Team
+        The Bahamas National Emissions Registry Team
         `,
   },
   CREDIT_TRANSFER_CANCELLATION: {
@@ -194,7 +194,7 @@ export const EmailTemplates = {
         Click <a href="{{pageLink}}">here</a> for more details of the transfer request.<br><br>
 
         Sincerely, <br>
-        The Bahamas National Emission Registry Team
+        The Bahamas National Emissions Registry Team
         `,
   },
   CREDIT_TRANSFER_CANCELLATION_SYS_TO_INITIATOR: {
@@ -207,7 +207,7 @@ export const EmailTemplates = {
       Click <a href="{{pageLink}}">here</a> for more details of the transfer request. <br><br>
 
       Sincerely, <br>
-      The Bahamas National Emission Registry Team
+      The Bahamas National Emissions Registry Team
     `,
   },
   CREDIT_TRANSFER_CANCELLATION_SYS_TO_SENDER: {
@@ -220,7 +220,7 @@ export const EmailTemplates = {
       Click <a href="{{pageLink}}">here</a> for more details of the transfer request. <br><br>
 
       Sincerely, <br>
-      The Bahamas National Emission Registry Team
+      The Bahamas National Emissions Registry Team
     `,
   },
   CREDIT_TRANSFER_ACCEPTED: {
@@ -233,7 +233,7 @@ export const EmailTemplates = {
         Click <a href="{{pageLink}}">here</a> for more details of the transfer request. <br><br>
 
         Sincerely, <br>
-        The Bahamas National Emission Registry Team
+        The Bahamas National Emissions Registry Team
         `,
   },
   CREDIT_TRANSFER_REJECTED: {
@@ -247,7 +247,7 @@ export const EmailTemplates = {
         Click <a href="{{pageLink}}">here</a> for more details of the transfer request. <br><br>
 
         Sincerely, <br>
-        The Bahamas National Emission Registry Team`,
+        The Bahamas National Emissions Registry Team`,
   },
   CREDIT_TRANSFER_GOV: {
     id: "CREDIT_TRANSFER_GOV",
@@ -261,7 +261,7 @@ export const EmailTemplates = {
         Click <a href="{{pageLink}}">here</a> for more details of the transfer request. <br><br>
 
         Sincerely, <br>
-        The Bahamas National Emission Registry Team
+        The Bahamas National Emissions Registry Team
         `,
   },
   CREDIT_TRANSFER_GOV_CANCELLATION: {
@@ -276,7 +276,7 @@ export const EmailTemplates = {
         Click <a href="{{pageLink}}">here</a> for more details of the transfer request. <br><br>
 
         Sincerely, <br>
-        The Bahamas National Emission Registry Team
+        The Bahamas National Emissions Registry Team
         `,
   },
   CREDIT_TRANSFER_GOV_ACCEPTED_TO_INITIATOR: {
@@ -289,7 +289,7 @@ export const EmailTemplates = {
         Click <a href="{{pageLink}}">here</a> for more details of the transfer request.<br><br>
 
         Sincerely, <br>
-        The Bahamas National Emission Registry Team
+        The Bahamas National Emissions Registry Team
         `,
   },
   CREDIT_TRANSFER_GOV_ACCEPTED_TO_RECEIVER: {
@@ -302,7 +302,7 @@ export const EmailTemplates = {
         Click <a href="{{pageLink}}">here</a> for more details of the transfer request <br> <br>
 
         Sincerely, <br>
-        The Bahamas National Emission Registry Team
+        The Bahamas National Emissions Registry Team
         `,
   },
   CREDIT_TRANSFER_GOV_REJECTED: {
@@ -315,7 +315,7 @@ export const EmailTemplates = {
         Click <a href="{{pageLink}}">here</a> for more details of the transfer request <br><br>
 
         Sincerely, <br>
-        The Bahamas National Emission Registry Team
+        The Bahamas National Emissions Registry Team
         `,
   },
   CREDIT_SEND_DEVELOPER: {
@@ -329,7 +329,7 @@ export const EmailTemplates = {
         Click <a href="{{pageLink}}">here</a> for more details of the transfer request. <br><br>
 
         Sincerely, <br>
-        The Bahamas National Emission Registry Team
+        The Bahamas National Emissions Registry Team
         `,
   },
   PROGRAMME_CERTIFICATION: {
@@ -342,7 +342,7 @@ export const EmailTemplates = {
         Click <a href="{{pageLink}}">here</a> for more details of the certification. <br><br>
 
         Sincerely, <br>
-        The Bahamas National Emission Registry Team
+        The Bahamas National Emissions Registry Team
         `,
   },
   PROGRAMME_CERTIFICATION_REVOKE_BY_CERT: {
@@ -355,7 +355,7 @@ export const EmailTemplates = {
         Click <a href="{{pageLink}}">here</a> for more details of the certification. <br><br>
 
         Sincerely, <br>
-        The Bahamas National Emission Registry Team
+        The Bahamas National Emissions Registry Team
         `,
   },
   PROGRAMME_CERTIFICATION_REVOKE_BY_GOVT_TO_PROGRAMME: {
@@ -368,7 +368,7 @@ export const EmailTemplates = {
         Click <a href="{{pageLink}}">here</a> for more details of the certification. <br><br>
 
         Sincerely, <br>
-        The Bahamas National Emission Registry Team
+        The Bahamas National Emissions Registry Team
         `,
   },
   PROGRAMME_CERTIFICATION_REVOKE_BY_GOVT_TO_CERT: {
@@ -381,7 +381,7 @@ export const EmailTemplates = {
         Click <a href="{{pageLink}}">here</a> for more details of the certification. <br><br>
 
         Sincerely, <br>
-        The Bahamas National Emission Registry Team
+        The Bahamas National Emissions Registry Team
         `,
   },
   PROGRAMME_CERTIFICATION_REVOKE_BY_SYSTEM: {
@@ -394,7 +394,7 @@ export const EmailTemplates = {
         Click <a href="{{pageLink}}">here</a> for more details of the certification. <br><br>
 
         Sincerely, <br>
-        The Bahamas National Emission Registry Team
+        The Bahamas National Emissions Registry Team
         `,
   },
   PROGRAMME_DEVELOPER_ORG_DEACTIVATION: {
@@ -410,7 +410,7 @@ export const EmailTemplates = {
          · All the international transfer retire requests sent by your Management Company were cancelled.<br><br>
 
         Sincerely, <br>
-        The Bahamas National Emission Registry Team
+        The Bahamas National Emissions Registry Team
         `,
   },
   CERTIFIER_ORG_DEACTIVATION: {
@@ -424,7 +424,7 @@ export const EmailTemplates = {
         · All the certificates given by your Management Company were revoked. <br><br>
 
         Sincerely, <br>
-        The Bahamas National Emission Registry Team
+        The Bahamas National Emissions Registry Team
         `,
   },
   CREDIT_RETIREMENT_BY_GOV: {
@@ -437,7 +437,7 @@ export const EmailTemplates = {
         Click <a href="{{pageLink}}">here</a> for more details of the retirement. <br><br>
 
         Sincerely, <br>
-        The Bahamas National Emission Registry Team
+        The Bahamas National Emissions Registry Team
         `,
   },
   CREDIT_RETIREMENT_BY_DEV: {
@@ -450,7 +450,7 @@ export const EmailTemplates = {
         Click <a href="{{pageLink}}">here</a> for more details of the international transfer retire request. <br><br>
 
         Sincerely, <br>
-        The Bahamas National Emission Registry Team
+        The Bahamas National Emissions Registry Team
         `,
   },
   CREDIT_RETIREMENT_CANCEL: {
@@ -463,7 +463,7 @@ export const EmailTemplates = {
         Click <a href="{{pageLink}}">here</a> for more details of the international transfer retire request. <br><br>
 
         Sincerely, <br>
-        The Bahamas National Emission Registry Team
+        The Bahamas National Emissions Registry Team
         `,
   },
   CREDIT_RETIREMENT_CANCEL_SYS_TO_INITIATOR: {
@@ -475,7 +475,7 @@ export const EmailTemplates = {
       Click <a href="{{pageLink}}">here</a> for more details of the international transfer retire request. <br><br>
 
       Sincerely,  <br>
-      The Bahamas National Emission Registry Team
+      The Bahamas National Emissions Registry Team
     `,
   },
   CREDIT_RETIREMENT_CANCEL_SYS_TO_GOV: {
@@ -487,7 +487,7 @@ export const EmailTemplates = {
       Click <a href="{{pageLink}}">here</a> for more details of the international transfer retire request. <br><br>
 
       Sincerely,  <br>
-      The Bahamas National Emission Registry Team
+      The Bahamas National Emissions Registry Team
     `,
   },
   CREDIT_RETIREMENT_RECOGNITION: {
@@ -500,7 +500,7 @@ export const EmailTemplates = {
         Click <a href="{{pageLink}}">here</a> for more details of the international transfer retire request. <br><br>
 
         Sincerely, <br>
-        The Bahamas National Emission Registry Team
+        The Bahamas National Emissions Registry Team
         `,
   },
   CREDIT_RETIREMENT_NOT_RECOGNITION: {
@@ -513,7 +513,7 @@ export const EmailTemplates = {
         Click <a href="{{pageLink}}">here</a> for more details of the international transfer retire request. <br><br>
 
         Sincerely, <br>
-        The Bahamas National Emission Registry Team
+        The Bahamas National Emissions Registry Team
         `,
   },
   ORG_REACTIVATION: {
@@ -525,7 +525,7 @@ export const EmailTemplates = {
         Your Organisation has been reactivated by the {{government}}. Your Organisation will be able to perform actions as before and all the users of the Management Company will be reactivated.  <br><br>
 
         Sincerely, <br>
-        The Bahamas National Emission Registry Team
+        The Bahamas National Emissions Registry Team
         `,
   },
 };

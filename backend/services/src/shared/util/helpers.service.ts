@@ -437,7 +437,7 @@ export class HelperService {
     }
 
     if(isSubject)
-      return `Emission Registry: ${template}`;
+      return `Emissions Registry: ${template}`;
     else 
       return template;
 }

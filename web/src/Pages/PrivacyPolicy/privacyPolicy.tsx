@@ -52,7 +52,7 @@ const PrivacyPolicy = () => {
             </li>
             <li>
               <strong>Company</strong> (referred to as either “the Company”, “We”, “Us” or “Our” in
-              this Agreement) refers to the National Emission Registry of the Commonwealth of The
+              this Agreement) refers to the National Emissions Registry of the Commonwealth of The
               Bahamas, Cecil Wallace-Whitfield Centre, P.O. Box CB-10980 Nassau, Bahamas.
             </li>
             <li>

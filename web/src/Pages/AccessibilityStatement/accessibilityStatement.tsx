@@ -36,7 +36,7 @@ const AccessibilityStatement = () => {
           </p>
           <ul>
             <li>
-              <strong>Postal Address:</strong> National Emission Registrar, Cecil Wallace-Whitfield
+              <strong>Postal Address:</strong> National Emissions Registrar, Cecil Wallace-Whitfield
               Centre, P.O. Box CB-10980 Nassau, Bahamas
             </li>
             <li>
