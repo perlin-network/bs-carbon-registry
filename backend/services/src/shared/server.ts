@@ -54,7 +54,7 @@ function setupSwagger(
   SwaggerModule.setup(`${httpBase}`, nestApp, document, {
     customSiteTitle: "API Documentation",
     customCss: `
-    .topbar-wrapper img {content:url(\'https://ner.bahamas.gov.bs/static/media/logo.1d4e6e6f04a4c394b087.png\'); height:50px; width:auto;}
+    .topbar-wrapper img {content:url(\'https://ner.bahamas.gov.bs/static/media/logo.23dab67616056c44fadd.png\'); height:50px; width:auto;}
     .swagger-ui .topbar { background-color: #f4f5fa; }
     .swagger-ui { background-color: white; }
     #links-header { position: absolute; top: 25px; right: calc((100% - 1440px)/2); }
