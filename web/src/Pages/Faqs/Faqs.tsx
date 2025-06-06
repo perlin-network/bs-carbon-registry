@@ -56,9 +56,16 @@ const faqs: FAQ[] = [
     answer: (
       <p>
         The Emission Reduction Initiatives and Incentives Regulations, 2025 were developed to
-        support The Bahamas’ Climate Change and Carbon Market Initiative Act, 2022. The Regulations
-        will help the country achieve its goal of reducing national emissions by 30% and increasing
-        renewable energy by 30% by the year 2030. <br />
+        support The Bahamas’{' '}
+        <a
+          href="https://faolex.fao.org/docs/pdf/bha211771.pdf"
+          target="_blank"
+          className="text-blue-600 underline"
+        >
+          Climate Change and Carbon Markets Initiatives Act, 2022
+        </a>
+        . The Regulations will help the country achieve its goal of reducing national emissions by
+        30% and increasing renewable energy by 30% by the year 2030. <br />
         <br />
         The Regulations will also support the Government and private sector in recording relevant
         data for GHG emissions and implementing effective emission reduction initiatives and
@@ -126,7 +133,17 @@ const faqs: FAQ[] = [
     question: 'Who is required to complete an activity data questionnaire?',
     answer: (
       <p>
-        Under the <em>Emission Reduction Initiatives and Incentives Regulations, 2025, </em>
+        Under the{' '}
+        <em>
+          <a
+            href="https://laws.bahamas.gov.bs/cms/images/LEGISLATION/BILLS/2025/2025-0012/2025-0012.pdf"
+            target="_blank"
+            className="text-blue-600 underline"
+          >
+            Emission Reduction Initiatives and Incentives Regulations, 2025
+          </a>
+          ,{' '}
+        </em>
         any entity operating in a sector identified in The Bahamas&apos; Nationally Determined
         Contributions (NDC) must be registered with the National Emissions Registry. The Registrar
         will then select registered entities to submit a completed activity data questionnaire.
