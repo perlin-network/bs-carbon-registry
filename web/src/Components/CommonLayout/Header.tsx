@@ -72,7 +72,7 @@ const Header = () => {
               ))}
             </Drawer>
             <NavLink to="/">
-              <img src={LogoPng} alt="National Emission Registry" />
+              <img src={LogoPng} alt="National Emissions Registry" />
             </NavLink>
           </div>
           <div className="header-menu">

@@ -15,7 +15,7 @@ const LayoutFooter = () => {
       <div className="container">
         <div className="credits-block">
           <div className="credits">
-            <img src={LogoPng} alt="National Emission Registry" />
+            <img src={LogoPng} alt="National Emissions Registry" />
             {/* <LogoSvg height={48} /> */}
             {/* <div>
               <div style={{ display: 'flex' }}>

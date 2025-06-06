@@ -22,27 +22,27 @@ const RegistrarFunctions = () => {
               <ul className="check-list">
                 <li>The initiatives implemented to reduce GHG emissions in The Bahamas;</li>
                 <li>The permits granted to participate in an initiative under this Act;</li>
-                <li>The emission allowance and the GHG reduction units;</li>
+                <li>The emissions allowance and the GHG reduction units;</li>
                 <li>The number of carbon credits issued or recognized by The Bahamas;</li>
                 <li>
-                  The number of carbon credits issued to promoters of emission reduction projects
+                  The number of carbon credits issued to promoters of emissions reduction projects
                   and programs;
                 </li>
                 <li>
-                  The issuance of emission allocations carbon credits and any carbon credits issued
+                  The issuance of emissions allocations carbon credits and any carbon credits issued
                   or recognized by The Bahamas from a national GHG registry account;
                 </li>
                 <li>
-                  The transfer of emission allocations, carbon credits and any carbon credits issued
+                  The transfer of emissions allocations, carbon credits and any carbon credits issued
                   or recognized by The Bahamas from a national GHG registry account;
                 </li>
                 <li>
-                  The cancellation of emission allocations, carbon credits and any other carbon
+                  The cancellation of emissions allocations, carbon credits and any other carbon
                   credits issued or recognized by the The Bahamas from a national GHG registry
                   account
                 </li>
                 <li>
-                  The addition of emission allocations, carbon credits and any other carbon credits
+                  The addition of emissions allocations, carbon credits and any other carbon credits
                   issued or recognized by The Bahamas from a national GHG registry account.
                 </li>
               </ul>
@@ -57,7 +57,7 @@ const RegistrarFunctions = () => {
             </div>
             <div className="section-column">
               <p>
-                The addition of emission allocations, carbon credits and any other carbon credits
+                The addition of emissions allocations, carbon credits and any other carbon credits
                 issued or recognized by The Bahamas from a national GHG registry account.
               </p>
               <h3>The Registrar shall</h3>

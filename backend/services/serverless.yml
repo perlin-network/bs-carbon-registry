@@ -63,8 +63,8 @@ functions:
 
 custom:
   sourceEmail:
-    dev: 'National Emission Registry Dev <shabnikkigoyal@gmail.com>'
-    prod: 'National Emission Registry <ner@bahamas.gov.bs>'
+    dev: 'National Emissions Registry Dev <shabnikkigoyal@gmail.com>'
+    prod: 'National Emissions Registry <ner@bahamas.gov.bs>'
   customDomain: ${file(./iaac/gateway/dns.yml):customDomain}
   optimize:
     external: ["swagger-ui-dist"]

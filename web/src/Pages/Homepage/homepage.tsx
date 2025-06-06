@@ -52,11 +52,11 @@ const Homepage = () => {
               <div className="homepage-hero-content">
                 <div className="homepage-hero-inner">
                   <h1 className="homepage-hero-title">
-                    {t('The Bahamas National Emission Registry')}
+                    {t('The Bahamas National Emissions Registry')}
                   </h1>
                   <p className="homepage-hero-subtitle">
                     {t(
-                      'Welcome to the official website of the National Emission Registry of The Bahamas. The Registry tracks and records the issuance and transfer of carbon credits and International Transfer of Mitigation Outcomes (ITMOs) recognised by and/or issued by the Commonwealth of The Bahamas.'
+                      'Welcome to the official website of the National Emissions Registry of The Bahamas. The Registry tracks and records the issuance and transfer of carbon credits and International Transfer of Mitigation Outcomes (ITMOs) recognised by and/or issued by the Commonwealth of The Bahamas.'
                     )}
                   </p>
                   <p className="homepage-hero-subtitle">
@@ -104,9 +104,9 @@ const Homepage = () => {
                 <p>The National Emissions Registry is mandated by law to:</p>
                 <ul className="check-list">
                   <li>Manage, report, and track Greenhouse gas emissions within the country</li>
-                  <li>Issue Greenhouse gas emission allocations</li>
+                  <li>Issue Greenhouse gas emissions allocations</li>
                   <li>
-                    Develop Greenhouse gas emission reduction initiatives and incentives for The
+                    Develop Greenhouse gas emissions reduction initiatives and incentives for The
                     Bahamas.
                   </li>
                 </ul>
