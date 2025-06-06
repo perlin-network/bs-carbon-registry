@@ -86,10 +86,10 @@ const faqs: FAQ[] = [
     question: 'What is an emissions reduction initiative?',
     answer: (
       <p>
-        An emissions reduction initiative is a program designed to help reduce an entity’s greenhouse
-        gas emissions and improve sustainability. Participants in these initiatives may also qualify
-        for emissions reduction incentives. You can either participate in a Government-led emission
-        reduction initiative or propose your own.
+        An emissions reduction initiative is a program designed to help reduce an entity’s
+        greenhouse gas emissions and improve sustainability. Participants in these initiatives may
+        also qualify for emissions reduction incentives. You can either participate in a
+        Government-led emission reduction initiative or propose your own.
         <br />
         <br />
         To participate and receive benefits, individuals or entities must make an application to the

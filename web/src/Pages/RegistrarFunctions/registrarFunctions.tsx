@@ -33,8 +33,8 @@ const RegistrarFunctions = () => {
                   or recognized by The Bahamas from a national GHG registry account;
                 </li>
                 <li>
-                  The transfer of emissions allocations, carbon credits and any carbon credits issued
-                  or recognized by The Bahamas from a national GHG registry account;
+                  The transfer of emissions allocations, carbon credits and any carbon credits
+                  issued or recognized by The Bahamas from a national GHG registry account;
                 </li>
                 <li>
                   The cancellation of emissions allocations, carbon credits and any other carbon
