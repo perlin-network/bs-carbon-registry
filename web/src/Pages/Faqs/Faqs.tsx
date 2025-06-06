@@ -17,8 +17,23 @@ const faqs: FAQ[] = [
         Minister. The NER is responsible for maintaining a register of emissions reductions, as well
         as issuing emission allocations, and developing emission reduction initiatives and
         incentives for The Bahamas. The complete functions of the NER can be found under Part VII of
-        the Climate Change and Carbon Markets Initiative Act, 2022, and within the Emission
-        Reduction Initiatives and Incentives Regulations, 2025.
+        the{' '}
+        <a
+          href="https://faolex.fao.org/docs/pdf/bha211771.pdf"
+          target="_blank"
+          className="text-blue-600 underline"
+        >
+          Climate Change and Carbon Markets Initiatives Act, 2022
+        </a>{' '}
+        and within the{' '}
+        <a
+          href="https://laws.bahamas.gov.bs/cms/images/LEGISLATION/BILLS/2025/2025-0012/2025-0012.pdf"
+          target="_blank"
+          className="text-blue-600 underline"
+        >
+          Emission Reduction Initiatives and Incentives Regulations, 2025
+        </a>
+        .
       </p>
     ),
   },
@@ -50,7 +65,7 @@ const faqs: FAQ[] = [
         incentives.
         <br />
         <a
-          href="/downloads/Emissions Reduction Initiatives and Incentives Regulations 2025.pdf"
+          href="https://laws.bahamas.gov.bs/cms/images/LEGISLATION/BILLS/2025/2025-0012/2025-0012.pdf"
           target="_blank"
           download
           className="text-blue-600 underline"
@@ -111,7 +126,7 @@ const faqs: FAQ[] = [
     question: 'Who is required to complete an activity data questionnaire?',
     answer: (
       <p>
-        Under the <em>Emission Reduction Initiatives and Incentives Regulations, 2025,</em>
+        Under the <em>Emission Reduction Initiatives and Incentives Regulations, 2025, </em>
         any entity operating in a sector identified in The Bahamas&apos; Nationally Determined
         Contributions (NDC) must be registered with the National Emissions Registry. The Registrar
         will then select registered entities to submit a completed activity data questionnaire.
@@ -131,6 +146,17 @@ const faqs: FAQ[] = [
       <p>
         For those who are required to fill out an activity data questionnaire, if you do not
         complete it by the indicated deadline, a fine will be applied (see Regulation 15 (7)).
+        <br />
+        <br />
+        For full details, see the{' '}
+        <a
+          href="https://laws.bahamas.gov.bs/cms/images/LEGISLATION/BILLS/2025/2025-0012/2025-0012.pdf"
+          target="_blank"
+          className="text-blue-600 underline"
+        >
+          Emission Reduction Initiatives and Incentives Regulations, 2025
+        </a>
+        .
       </p>
     ),
   },
