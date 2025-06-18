@@ -28,8 +28,7 @@ const news = [
   // },
   {
     title: `Prime Minister Philip Davis's Communication on the Emissions Reduction Initiatives and Incentives Regulations, 2025 - Office of the Prime Minister (March 26, 2025)`,
-    url: 'https://opm.gov.bs/prime-minister-davis-emission-reduction-initiatives-incentives-regulations/',
-    displayName:
+    titleUrl:
       'https://opm.gov.bs/prime-minister-davis-emission-reduction-initiatives-incentives-regulations/',
   },
   {
@@ -41,19 +40,29 @@ const news = [
 
 interface NewsItemProps {
   title: string;
-  url: string;
-  displayName: string;
+  titleUrl?: string;
+  url?: string;
+  displayName?: string;
 }
 
-const NewsItem: React.FC<NewsItemProps> = ({ title, url, displayName }) => (
+const NewsItem: React.FC<NewsItemProps> = ({ title, titleUrl, url, displayName }) => (
   <li className="news-item">
     <span className="news-title">
-      {title}
-      {' - '}
-      {/* <a href={url}>{url}</a> */}
-      <a href={url} target="_blank" rel="noopener noreferrer">
-        {displayName}
-      </a>
+      {titleUrl ? (
+        <a href={titleUrl} target="_blank" rel="noopener noreferrer">
+          {title}
+        </a>
+      ) : (
+        <> {title}</>
+      )}
+      {displayName ? (
+        <>
+          {' - '}
+          <a href={url} target="_blank" rel="noopener noreferrer">
+            {displayName}
+          </a>
+        </>
+      ) : null}
     </span>
   </li>
 );
