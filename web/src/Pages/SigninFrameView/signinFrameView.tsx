@@ -1,6 +1,6 @@
 import config from '../../config';
 const SigninFrameView = () => {
-  const signinIframeUrl = config.iframurl + '/continue-application'; 
+  const signinIframeUrl = config.iframurl + '/continue-application';
   return (
     <iframe
       src={signinIframeUrl}
