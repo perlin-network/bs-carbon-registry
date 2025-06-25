@@ -3,33 +3,10 @@ import config from '../../config';
 const signupIframeUrl = config.iframurl + '/signup';
 const SignupFrameView = () => {
   return (
-    <div
-      className="sign-up"
-      style={{
-        height: '100%',
-        margin: 0,
-        overflow: 'hidden',
-      }}
-    >
-      <div
-        className="container"
-        style={{
-          minHeight: '100%',
-          overflow: 'hidden',
-        }}
-      >
-        <iframe
-          src={signupIframeUrl}
-          style={{
-            width: '100%',
-            height: '1450px',
-            border: 'none',
-            overflow: 'hidden',
-          }}
-          scrolling="no" // Moved outside of style object
-        ></iframe>
-      </div>
-    </div>
+    <iframe
+      src={signupIframeUrl}
+      style={{ width: '100%', height: '100%', flex: 1, border: 'none' }}
+    ></iframe>
   );
 };
 export default SignupFrameView;
