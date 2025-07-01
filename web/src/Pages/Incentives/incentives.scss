@@ -52,3 +52,29 @@
     }
   }
 }
+.faq-list {
+  margin-top: 2rem;
+}
+
+.faq-item {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+.faq-question {
+  background-color: #f5f5f5;
+  padding: 1rem;
+  width: 100%;
+  text-align: left;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+.faq-answer {
+  padding: 1rem;
+  background-color: #fff;
+}
