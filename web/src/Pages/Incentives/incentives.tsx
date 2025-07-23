@@ -24,7 +24,7 @@ const Incentives = () => {
             decarbonization and lower greenhouse gas emissions.
           </p>
 
-          <div className="faq-list mt-6">
+          <div className="mt-6 faq-list">
             <div className="faq-item">
               <button className="faq-question" onClick={() => toggleOpen(0)}>
                 Green Choice Exemption Programme
@@ -43,8 +43,8 @@ const Incentives = () => {
                     Households, commercial entities, and non-profit organizations can participate in
                     this incentive.
                   </p>
-                  <p className="font-semibold mt-4 mb-1">Steps for participation:</p>
-                  <ol className="list-decimal ml-6 space-y-2">
+                  <p className="mt-4 mb-1 font-semibold">Steps for participation:</p>
+                  <ol className="space-y-2 ml-6 list-decimal">
                     <li>
                       Review the specifications guidelines to ensure that your appliance(s) are
                       eligible to receive duty exemption. If unsure, contact the NER at{' '}
@@ -72,7 +72,8 @@ const Incentives = () => {
                         className="text-blue-600 underline"
                       >
                         MyGateway portal
-                      </a>{' '}
+                      </a>
+                      , select Office of the Prime Minister, and select National Emissions Registry
                       to complete the relevant application.
                     </li>
                     <li>
