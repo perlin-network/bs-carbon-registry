@@ -41,7 +41,7 @@ function setupSwagger(
     .setTitle(`${name.replace("APIModule", " API")}`)
     .setDescription(
       `RESTful Web API Documentation.
-      <div id="links-header"><a target="_blank" href="https://github.com/perlin-network/bs-carbon-registry">Github</a><a target="_blank" href="https://bs-cr-api.perlin.net/${stage}/national/ping">Status</a></div>`
+      <div id="links-header"><a target="_blank" href="https://github.com/perlin-network/bs-carbon-registry">Github</a><a target="_blank" href="https://api.bahamasemissionregistry.org/${stage}/national/ping">Status</a></div>`
     )
     .setVersion("0.5")
     .addBearerAuth()

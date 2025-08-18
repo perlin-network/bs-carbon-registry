@@ -1,8 +1,8 @@
 customDomain:
-  domainName: bs-cr-api.perlin.net
+  domainName: api.bahamasemissionregistry.org
   stage: ${self:provider.stage}
   basePath: ${self:provider.stage}
-  certificateName: 'perlin.net'
+  certificateName: 'bahamasemissionregistry.org'
   createRoute53Record: false
   endpointType: 'edge'
   securityPolicy: tls_1_2

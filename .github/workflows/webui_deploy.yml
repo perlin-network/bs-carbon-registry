@@ -29,9 +29,9 @@ jobs:
       - name: Set REACT_APP_BACKEND
         run: |
           if [ "${{ github.event.inputs.stage_name }}" == "uat" ]; then
-            echo "REACT_APP_BACKEND=https://bs-cr-api.perlin.net/dev" >> $GITHUB_ENV
+            echo "REACT_APP_BACKEND=https://api.bahamasemissionregistry.org/dev" >> $GITHUB_ENV
           else
-            echo "REACT_APP_BACKEND=https://bs-cr-api.perlin.net/prod" >> $GITHUB_ENV
+            echo "REACT_APP_BACKEND=https://api.bahamasemissionregistry.org/prod" >> $GITHUB_ENV
           fi
 
       - name: Set REACT_APP_IFRAME_BASE_URL

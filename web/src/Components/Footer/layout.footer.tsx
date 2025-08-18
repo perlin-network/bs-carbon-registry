@@ -52,7 +52,7 @@ const LayoutFooter = () => {
             <a href="/help" target={'blank'} className="footertext-links">
               {t('homepage:Help')}
             </a>
-            <a href="https://status.perlin.net/" target={'blank'} className="footertext-links">
+            <a href="https://status.bahamasemissionregistry.org/" target={'blank'} className="footertext-links">
               {t('homepage:Status')}
             </a>
             <a href="/cookie" className="footertext-links">
