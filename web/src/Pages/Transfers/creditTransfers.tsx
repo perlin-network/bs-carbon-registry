@@ -67,6 +67,7 @@ const CreditTransfer = () => {
   }));
 
   const [selectedStatus, setSelectedStatus] = useState<any>(statusOptions.map((e) => e.value));
+  const [selectedRetired, setSelectedRetired] = useState<boolean>(true);
   const [indeterminate, setIndeterminate] = useState(false);
   const [checkAll, setCheckAll] = useState(true);
 
@@ -105,6 +106,20 @@ const CreditTransfer = () => {
       value: checkedValues,
     });
   };
+
+  const onRetiredQuery = async (value: boolean) => {
+    console.log(value);
+
+    if (value !== selectedRetired) {
+      setSelectedRetired(value);
+    }
+
+    setStatusFilter({
+      key: 'isRetirement',
+      operation: '==',
+      value: value,
+    });
+  };
   const { Search } = Input;
 
   const onCheckAllChange = (e: any) => {
@@ -113,6 +128,7 @@ const CreditTransfer = () => {
     setIndeterminate(false);
     setCheckAll(e.target.checked);
     onStatusQuery(nw);
+    onRetiredQuery(e.target.checked);
   };
 
   const getAllTransfers = async () => {
@@ -718,6 +734,12 @@ const CreditTransfer = () => {
                 value={selectedStatus}
                 onChange={onStatusQuery}
               />
+              <Checkbox
+                onChange={e => onRetiredQuery(e.target.checked)}
+                defaultChecked={true}
+              >
+                Retired
+              </Checkbox>
             </div>
           </Col>
           <Col lg={{ span: 8 }} md={{ span: 8 }}>
