@@ -113,12 +113,6 @@ const CreditTransfer = () => {
     if (value !== selectedRetired) {
       setSelectedRetired(value);
     }
-
-    setStatusFilter({
-      key: 'isRetirement',
-      operation: '=', // <-- change '==' to '='
-      value: value,
-    });
   };
   const { Search } = Input;
 
@@ -137,6 +131,11 @@ const CreditTransfer = () => {
     if (statusFilter) {
       filter.push(statusFilter);
     }
+    filter.push({
+      key: 'isRetirement',
+      operation: '=',
+      value: selectedRetired,
+    });
 
     if (search && search !== '') {
       const interFilterOr = [
@@ -216,7 +215,7 @@ const CreditTransfer = () => {
     } else {
       getAllTransfers();
     }
-  }, [statusFilter, dataFilter]);
+  }, [statusFilter, dataFilter, selectedRetired]);
 
   useEffect(() => {
     getAllTransfers();
@@ -734,7 +733,10 @@ const CreditTransfer = () => {
                 value={selectedStatus}
                 onChange={onStatusQuery}
               />
-              <Checkbox onChange={(e) => onRetiredQuery(e.target.checked)} defaultChecked={true}>
+              <Checkbox
+                onChange={(e) => onRetiredQuery(e.target.checked)}
+                defaultChecked={selectedRetired}
+              >
                 Retired
               </Checkbox>
             </div>
