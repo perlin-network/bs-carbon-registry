@@ -116,7 +116,7 @@ const CreditTransfer = () => {
 
     setStatusFilter({
       key: 'isRetirement',
-      operation: '==',
+      operation: '=', // <-- change '==' to '='
       value: value,
     });
   };
