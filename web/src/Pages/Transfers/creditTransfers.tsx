@@ -734,10 +734,7 @@ const CreditTransfer = () => {
                 value={selectedStatus}
                 onChange={onStatusQuery}
               />
-              <Checkbox
-                onChange={e => onRetiredQuery(e.target.checked)}
-                defaultChecked={true}
-              >
+              <Checkbox onChange={(e) => onRetiredQuery(e.target.checked)} defaultChecked={true}>
                 Retired
               </Checkbox>
             </div>
