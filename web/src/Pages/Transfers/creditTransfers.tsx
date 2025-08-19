@@ -128,7 +128,7 @@ const CreditTransfer = () => {
     setIndeterminate(false);
     setCheckAll(e.target.checked);
     onStatusQuery(nw);
-    onRetiredQuery(e.target.checked);
+    onRetiredQuery(e.target.checked ? true : false);
   };
 
   const getAllTransfers = async () => {
