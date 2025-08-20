@@ -31,29 +31,29 @@ jobs:
           if [ "${{ github.event.inputs.stage_name }}" == "uat" ]; then
             echo "REACT_APP_BACKEND=https://api.bahamasemissionregistry.org/dev" >> $GITHUB_ENV
           else
-            echo "REACT_APP_BACKEND=https://api.bahamasemissionregistry.org/prod" >> $GITHUB_ENV
+            echo "REACT_APP_BACKEND=https://api.ner.bahamas.gov.bs/prod" >> $GITHUB_ENV
           fi
 
       - name: Set REACT_APP_IFRAME_BASE_URL
         run: |
           if [ "${{ github.event.inputs.stage_name }}" == "ner" ]; then
-            echo "REACT_APP_IFRAME_BASE_URL=https://prod-carbon-app.mtckarn7q2.com" >> $GITHUB_ENV
+            echo "REACT_APP_IFRAME_BASE_URL=https://app.ner.bahamas.gov.bs" >> $GITHUB_ENV
           else
-            echo "REACT_APP_IFRAME_BASE_URL=https://carbon-app.mtckarn7q2.com" >> $GITHUB_ENV
+            echo "REACT_APP_IFRAME_BASE_URL=https://carbon.bahamasemissionregistry.org" >> $GITHUB_ENV
           fi
       - name: Set REACT_APP_CARBON_LOGIN_LINK
         run: |
           if [ "${{ github.event.inputs.stage_name }}" == "ner" ]; then
-            echo "REACT_APP_CARBON_LOGIN_LINK=https://prod-carbon-admin.mtckarn7q2.com" >> $GITHUB_ENV
+            echo "REACT_APP_CARBON_LOGIN_LINK=https://admin.ner.bahamas.gov.bs" >> $GITHUB_ENV
           else
-            echo "REACT_APP_CARBON_LOGIN_LINK=https://carbon-admin.mtckarn7q2.com" >> $GITHUB_ENV
+            echo "REACT_APP_CARBON_LOGIN_LINK=https://admin.carbon.bahamasemissionregistry.org" >> $GITHUB_ENV
           fi
       - name: Set REACT_APP_BIO_LOGIN_LINK
         run: |
           if [ "${{ github.event.inputs.stage_name }}" == "ner" ]; then
-            echo "REACT_APP_BIO_LOGIN_LINK=https://prod-bio-admin.mtckarn7q2.com" >> $GITHUB_ENV
+            echo "REACT_APP_BIO_LOGIN_LINK=https://admin.bio.bahamas.gov.bs" >> $GITHUB_ENV
           else
-            echo "REACT_APP_BIO_LOGIN_LINK=https://bio-admin.mtckarn7q2.com" >> $GITHUB_ENV
+            echo "REACT_APP_BIO_LOGIN_LINK=https://admin.bio.bahamasemissionregistry.org" >> $GITHUB_ENV
           fi
 
       - name: Cache modules
