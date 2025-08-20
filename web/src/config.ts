@@ -10,7 +10,8 @@ const config = {
   mapBoxToken: process.env.REACT_APP_MAPBOXGL_ACCESS_TOKEN,
   mapType: process.env.REACT_APP_MAP_TYPE || 'None',
   iframurl: process.env.REACT_APP_IFRAME_BASE_URL || 'http://localhost:3000/carbon/app',
-  carbonLogin: process.env.REACT_APP_CARBON_LOGIN_LINK || 'https://admin.carbon.bahamasemissionregistry.org',
+  carbonLogin:
+    process.env.REACT_APP_CARBON_LOGIN_LINK || 'https://admin.carbon.bahamasemissionregistry.org',
   bioLogin: process.env.REACT_APP_BIO_LOGIN_LINK || 'https://admin.bio.bahamasemissionregistry.org',
 };
 
