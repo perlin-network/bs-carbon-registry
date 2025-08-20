@@ -67,6 +67,7 @@ const CreditTransfer = () => {
   }));
 
   const [selectedStatus, setSelectedStatus] = useState<any>(statusOptions.map((e) => e.value));
+  const [selectedRetired, setSelectedRetired] = useState(true);
   const [indeterminate, setIndeterminate] = useState(false);
   const [checkAll, setCheckAll] = useState(true);
 
@@ -107,12 +108,14 @@ const CreditTransfer = () => {
   };
   const { Search } = Input;
 
-  const onCheckAllChange = (e: any) => {
-    const nw = e.target.checked ? statusOptions.map((el) => el.value) : [];
+  const onCheckAllChange = async (e: any) => {
+    const isChecked = e.target.checked;
+    const nw = isChecked ? statusOptions.map((el) => el.value) : [];
+    setSelectedRetired(isChecked);
     setSelectedStatus(nw);
     setIndeterminate(false);
-    setCheckAll(e.target.checked);
-    onStatusQuery(nw);
+    setCheckAll(isChecked);
+    await onStatusQuery(nw);
   };
 
   const getAllTransfers = async () => {
@@ -121,6 +124,11 @@ const CreditTransfer = () => {
     if (statusFilter) {
       filter.push(statusFilter);
     }
+    filter.push({
+      key: 'isRetirement',
+      operation: '=',
+      value: selectedRetired,
+    });
 
     if (search && search !== '') {
       const interFilterOr = [
@@ -718,6 +726,20 @@ const CreditTransfer = () => {
                 value={selectedStatus}
                 onChange={onStatusQuery}
               />
+              <Checkbox
+                onChange={async (e) => {
+                  setSelectedRetired(e.target.checked);
+                  if (!e.target.checked && checkAll) {
+                    setCheckAll(false);
+                  } else if (e.target.checked && selectedStatus.length === statusOptions.length) {
+                    setCheckAll(true);
+                  }
+                  await getAllTransfers();
+                }}
+                checked={selectedRetired}
+              >
+                Retired
+              </Checkbox>
             </div>
           </Col>
           <Col lg={{ span: 8 }} md={{ span: 8 }}>
