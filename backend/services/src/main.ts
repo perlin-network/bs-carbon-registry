@@ -25,15 +25,15 @@ async function bootstrap() {
         httpPath = "stats";
         break;
       case "replicator":
-        await handler();
+        await handler({}, {} as any, () => { });
         console.log("Module initiated", moduleName);
         continue;
       case "async-operations-handler":
-        await asyncHandler();
+        await asyncHandler({}, {} as any, () => { });
         console.log("Module initiated", moduleName);
         continue;
       case "data-importer":
-        await importHandler({ importTypes: "ITMO_SYSTEM" });
+        await importHandler({ importTypes: "ITMO_SYSTEM" }, {} as any, () => { });
         console.log("Module initiated", moduleName);
         continue;
       default:
@@ -47,19 +47,19 @@ async function bootstrap() {
       if (fs.existsSync('organisations.csv') && fs.lstatSync('organisations.csv').isFile()) {
         const orgs = await fs.readFileSync("organisations.csv", "utf8");
         console.log("Inserting orgs", orgs);
-        await setupHandler.handler({ type: "IMPORT_ORG", body: orgs });
+        await setupHandler.handler({ type: "IMPORT_ORG", body: orgs }, {} as any, () => { });
       }
-      
+
       if (fs.existsSync('users.csv') && fs.lstatSync('users.csv').isFile()) {
         const users = await fs.readFileSync("users.csv", "utf8");
         console.log("Inserting users", users);
-        await setupHandler.handler({ type: "IMPORT_USERS", body: users });
+        await setupHandler.handler({ type: "IMPORT_USERS", body: users }, {} as any, () => { });
       }
 
       const staticPath = join(__dirname, "..", "public");
       console.log("Static file path:", staticPath);
       app.useStaticAssets(staticPath);
-      await setupHandler.handler();
+      await setupHandler.handler({}, {} as any, () => { });
     }
     await app.listen(process.env.RUN_PORT || 3000);
     console.log("Module initiated", moduleName);
