@@ -8,6 +8,7 @@ const config = {
     process.env.REACT_APP_COUNTRY_FLAG_URL ||
     'https://bs-cr-perlin-common-prod.s3.amazonaws.com/flag.png',
   mapBoxToken: process.env.REACT_APP_MAPBOXGL_ACCESS_TOKEN,
+  recaptchaSiteKey: process.env.RECAPTCHA_SITE_KEY,
   mapType: process.env.REACT_APP_MAP_TYPE || 'None',
   iframurl: process.env.REACT_APP_IFRAME_BASE_URL || 'http://localhost:3000/carbon/app',
   carbonLogin:

@@ -1,3 +1,4 @@
+import axios from 'axios';
 import {
   Controller,
   Post,
@@ -21,6 +22,23 @@ export class ContactUsController {
 
   @Post()
   async contactUs(@Body() contactUsDto: ContactUsDto, @Request() req) {
+    // Verify reCAPTCHA token
+    if (!contactUsDto.recaptchaToken) {
+      throw new HttpException('reCAPTCHA token missing', HttpStatus.BAD_REQUEST);
+    }
+    const secret = process.env.RECAPTCHA_SECRET_KEY;
+    if (!secret) {
+      throw new HttpException('reCAPTCHA secret not configured', HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+    try {
+      const verifyUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${secret}&response=${contactUsDto.recaptchaToken}`;
+      const { data } = await axios.post(verifyUrl, {}, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } });
+      if (!data.success) {
+        throw new HttpException('reCAPTCHA verification failed', HttpStatus.BAD_REQUEST);
+      }
+    } catch (err) {
+      throw new HttpException('reCAPTCHA verification error', HttpStatus.BAD_REQUEST);
+    }
     if (!contactUsDto.email || !contactUsDto.message) {
       throw new HttpException(
         this.helperService.formatReqMessagesString('contact.invalidInput', []),
