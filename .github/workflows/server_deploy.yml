@@ -103,10 +103,18 @@ jobs:
       # - name: Build Carbon Credit Package
       #   working-directory: ./libs/carbon-credit-calculator
       #   run: yarn run build
+      - name: Set RECAPTCHA_SECRET_KEY
+        run: |
+          if [ "${{ github.event.inputs.stage_name }}" == "prod" ]; then
+            echo "RECAPTCHA_SECRET_KEY=${{ secrets.RECAPTCHA_SECRET_KEY_PROD }}" >> $GITHUB_ENV
+          else
+            echo "RECAPTCHA_SECRET_KEY=${{ secrets.RECAPTCHA_SECRET_KEY_DEV }}" >> $GITHUB_ENV
+          fi
+      # ...existing code...
       - name: serverless deploy
         uses: serverless/github-action@v3.1
         env:
-          RECAPTCHA_SECRET_KEY: ${{ secrets.RECAPTCHA_SECRET_KEY }}
+          RECAPTCHA_SECRET_KEY: ${{ env.RECAPTCHA_SECRET_KEY }}
         with:
           args: -c "cd ./backend/services && serverless deploy --stage ${{ github.event.inputs.stage_name }} --force --param='depLayerArn1=${{ steps.layerArn.outputs.ARN1 }}' --param='depLayerArn2=${{ steps.layerArn.outputs.ARN2 }}' --param='depLayerBlockchainArn=${{ steps.layerArn.outputs.ARN_BLOCKCHAIN_LAYER }}'"
           # args: -c "cd ./backend/services && serverless deploy --stage ${{ github.event.inputs.stage_name }} --param='depLayerArn1=${{ steps.layerArn.outputs.ARN1 }}' --param='depLayerArn2=${{ steps.layerArn.outputs.ARN2 }}'"
