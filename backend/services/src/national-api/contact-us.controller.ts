@@ -11,14 +11,16 @@ import { ApiTags } from '@nestjs/swagger';
 import { ContactUsService } from 'src/shared/contact/contact-us.service';
 import { ContactUsDto } from 'src/shared/dto/contact-us.dto';
 import { HelperService } from 'src/shared/util/helpers.service';
+import { ConfigService } from '@nestjs/config';
 
 @ApiTags("Contact Us")
 @Controller('contact')
 export class ContactUsController {
   constructor(
     private readonly contactUsService: ContactUsService,
-    private readonly helperService: HelperService
-  ) {}
+    private readonly helperService: HelperService,
+    private readonly configService: ConfigService,
+  ) { }
 
   @Post()
   async contactUs(@Body() contactUsDto: ContactUsDto, @Request() req) {
@@ -26,7 +28,8 @@ export class ContactUsController {
     if (!contactUsDto.recaptchaToken) {
       throw new HttpException('reCAPTCHA token missing', HttpStatus.BAD_REQUEST);
     }
-    const secret = process.env.RECAPTCHA_SECRET_KEY;
+    const secret = this.configService.get<string>("recaptcha.secretKey");
+    console.log('Recaptcha Secret:', secret);
     if (!secret) {
       throw new HttpException('reCAPTCHA secret not configured', HttpStatus.INTERNAL_SERVER_ERROR);
     }
