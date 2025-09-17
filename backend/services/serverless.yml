@@ -26,7 +26,6 @@ provider:
     DB_NAME: "bscarbondb${self:provider.stage}"
     DB_HOST: "bscarbondb${self:provider.stage}.c0rjpojmhdkp.us-east-1.rds.amazonaws.com"
     ASYNC_QUEUE_NAME: https://sqs.us-east-1.amazonaws.com/909101490035/BSAsyncQueue${self:provider.stage}.fifo
-    RECAPTCHA_SECRET_KEY: /${self:service}/${self:provider.stage}/RECAPTCHA_SECRET_KEY~true
 
   # iam:
   #   role: arn:aws:iam::909101490035:role/lambda-role
@@ -85,7 +84,8 @@ custom:
     PERL_LEDGER_PROVIDER_URL: /${self:service}/${self:provider.stage}/PERL_LEDGER_PROVIDER_URL~true
     PERL_LEDGER_CONTRACT_ADDRESS: /${self:service}/${self:provider.stage}/PERL_LEDGER_CONTRACT_ADDRESS~true
     PERL_LEDGER_WALLET_PRIVATE_KEY: /${self:service}/${self:provider.stage}/PERL_LEDGER_WALLET_PRIVATE_KEY~true
-  # sesTemplates:
+    RECAPTCHA_SECRET_KEY: /${self:service}/${self:provider.stage}/RECAPTCHA_SECRET_KEY~true
+ # sesTemplates:
   #   addStage: true                             # Specifies whether to add stage to template name (default false)
   #   configFile: './src/shared/email/email.template.ts' # Config file path (default './ses-email-templates/index.js')
   #   region: 'us-east-1'
