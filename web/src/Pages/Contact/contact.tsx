@@ -8,7 +8,8 @@ import MapComponent from '../../Components/Maps/MapComponent';
 import config from '../../config';
 import { useConnection } from '../../Context/ConnectionContext/connectionContext';
 // Replace with your actual reCAPTCHA v2 site key
-const recaptchaSiteKey = config.recaptchaSiteKey ?? 'YOUR_RECAPTCHA_SITE_KEY';
+console.log('Recaptcha Key:', config.recaptchaSiteKey);
+const recaptchaSiteKey = config.recaptchaSiteKey ?? 'REACT_APP_RECAPTCHA_SITE_KEY';
 
 const mapType = config.mapType;
 
