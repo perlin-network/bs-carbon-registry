@@ -19,4 +19,9 @@ export class ContactUsDto {
   @IsNotEmpty()
   @Length(1, 500)
   message?: string;
+
+  @ApiProperty({ description: "Google reCAPTCHA token", required: true })
+  @IsString()
+  @IsNotEmpty()
+  recaptchaToken: string;
 }

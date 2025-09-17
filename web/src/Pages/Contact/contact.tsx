@@ -1,3 +1,5 @@
+import React, { useState } from 'react';
+import ReCAPTCHA from 'react-google-recaptcha';
 import './contact.scss';
 import { Form, Input, Button, message } from 'antd';
 import HeroHeader from '../../Components/HeroHeader/HeroHeader';
@@ -5,22 +7,30 @@ import BackgroundJpg from '../../Assets/Images/contact-bg.jpg';
 import MapComponent from '../../Components/Maps/MapComponent';
 import config from '../../config';
 import { useConnection } from '../../Context/ConnectionContext/connectionContext';
-import { useState } from 'react';
+// Replace with your actual reCAPTCHA v2 site key
+console.log('Recaptcha Key:', config.recaptchaSiteKey);
+const recaptchaSiteKey = config.recaptchaSiteKey ?? 'REACT_APP_RECAPTCHA_SITE_KEY';
 
 const mapType = config.mapType;
-const contactIframeUrl = config.iframurl + '/contact';
 
 const Contact = () => {
   const [loading, setLoading] = useState<boolean>(false);
+  const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
   const [form] = Form.useForm();
   const { post } = useConnection();
 
   const onFinish = async (values: any) => {
+    if (!recaptchaToken) {
+      message.error('Please complete the reCAPTCHA.');
+      return;
+    }
     try {
       setLoading(true);
-      const response = await post('national/contact', values);
+      // Include the recaptchaToken in the payload
+      const response = await post('national/contact', { ...values, recaptchaToken });
       message.success('Message sent!');
       form.resetFields();
+      setRecaptchaToken(null);
     } catch (err) {
       message.error('Error occurred');
       console.error(err);
@@ -53,6 +63,9 @@ const Contact = () => {
                 <Form.Item label="Message" name="message">
                   <Input.TextArea placeholder="Your message..." rows={6} />
                 </Form.Item>
+                <div style={{ marginBottom: 16 }}>
+                  <ReCAPTCHA sitekey={recaptchaSiteKey} onChange={setRecaptchaToken} />
+                </div>
                 {/* Button triggers form submit */}
                 <div className="login-submit-btn-container">
                   <Button type="primary" size="large" htmlType="submit" block loading={loading}>
@@ -60,10 +73,6 @@ const Contact = () => {
                   </Button>
                 </div>
               </Form>
-              {/* <iframe
-                src={contactIframeUrl}
-                style={{ width: '100%', height: '450px', flex: 1, border: 'none' }}
-              ></iframe> */}
             </div>
             <div className="section-column">
               <MapComponent

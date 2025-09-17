@@ -56,6 +56,14 @@ jobs:
             echo "REACT_APP_BIO_LOGIN_LINK=https://admin.bio.bahamasemissionregistry.org" >> $GITHUB_ENV
           fi
 
+      - name: Set REACT_APP_RECAPTCHA_SITE_KEY
+        run: |
+          if [ "${{ github.event.inputs.stage_name }}" == "uat" ]; then
+            echo "REACT_APP_RECAPTCHA_SITE_KEY=${{ secrets.RECAPTCHA_SITE_KEY_UAT }}" >> $GITHUB_ENV
+          else
+            echo "REACT_APP_RECAPTCHA_SITE_KEY=${{ secrets.RECAPTCHA_SITE_KEY_NER }}" >> $GITHUB_ENV
+          fi
+
       - name: Cache modules
         uses: actions/cache@v4
         id: yarn-cache
