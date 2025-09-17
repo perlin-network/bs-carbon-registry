@@ -26,6 +26,7 @@ provider:
     DB_NAME: "bscarbondb${self:provider.stage}"
     DB_HOST: "bscarbondb${self:provider.stage}.c0rjpojmhdkp.us-east-1.rds.amazonaws.com"
     ASYNC_QUEUE_NAME: https://sqs.us-east-1.amazonaws.com/909101490035/BSAsyncQueue${self:provider.stage}.fifo
+    RECAPTCHA_SECRET_KEY: /${self:service}/${self:provider.stage}/RECAPTCHA_SECRET_KEY~true
 
   # iam:
   #   role: arn:aws:iam::909101490035:role/lambda-role
