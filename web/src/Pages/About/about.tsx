@@ -18,7 +18,7 @@ const publications = [
     url: 'https://laws.bahamas.gov.bs/cms/images/LEGISLATION/BILLS/2025/2025-0012/2025-0012.pdf',
   },
   {
-    title: 'The Bahamas\' Third Nationally Determined Contributions (NDC 3.0)',
+    title: "The Bahamas' Third Nationally Determined Contributions (NDC 3.0)",
     url: 'https://unfccc.int/sites/default/files/2025-11/The%20Bahamas%20NDC%203.0.pdf',
   },
 ];
