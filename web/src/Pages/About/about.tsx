@@ -6,17 +6,20 @@ import BackgroundJpg from '../../Assets/Images/news-bg.jpg';
 
 const publications = [
   {
-    title:
-      'First Biennial Update Report (BUR1)of the Commonwealth of The Bahamas to the United Nations Framework Convention on Climate Change (UNFCCC)',
-    date: 'December 2022',
-    image: 'http://placehold.it/128x160',
-    url: 'https://unfccc.int/documents/624761',
+    title: 'Climate Change and Carbon Markets Initiatives Act ',
+    url: 'https://laws.bahamas.gov.bs/cms/images/LEGISLATION/PRINCIPAL/2022/2022-0015/2022-0015_1.pdf',
   },
   {
-    title: '2024 The Bahamas TNC to the UNFCCC',
-    date: 'June 2024',
-    image: 'http://placehold.it/128x160',
-    url: 'https://unfccc.int/sites/default/files/resource/2024%20The%20Bahamas%20TNC%20to%20the%20UNFCCC.pdf',
+    title: 'Carbon Trading Act',
+    url: 'https://laws.bahamas.gov.bs/cms/images/LEGISLATION/PRINCIPAL/2022/2022-0036/2022-0036_1.pdf',
+  },
+  {
+    title: 'Emissions Reductions Initiatives and Incentives Regulations',
+    url: 'https://laws.bahamas.gov.bs/cms/images/LEGISLATION/BILLS/2025/2025-0012/2025-0012.pdf',
+  },
+  {
+    title: 'The Bahamas\' Third Nationally Determined Contributions (NDC 3.0)',
+    url: 'https://unfccc.int/sites/default/files/2025-11/The%20Bahamas%20NDC%203.0.pdf',
   },
 ];
 
@@ -69,19 +72,17 @@ const NewsItem: React.FC<NewsItemProps> = ({ title, titleUrl, url, displayName }
 
 interface PublicationItemProps {
   title: string;
-  date: string;
-  image: string;
   url: string;
 }
 
-const PublicationItem: React.FC<PublicationItemProps> = ({ title, date, image, url }) => (
+const PublicationItem: React.FC<PublicationItemProps> = ({ title, url }) => (
   <li className="publication-item">
-    <img src={image} alt="" className="publication-image" />
+    {/* <img src={image} alt="" className="publication-image" /> */}
     <div className="publication-body">
       <a href={url} target="_blank" className="publication-title">
         {title}
       </a>
-      <div className="publication-date">{date}</div>
+      {/* <div className="publication-date">{date}</div> */}
     </div>
   </li>
 );
@@ -91,7 +92,7 @@ const About = () => {
 
   return (
     <div className="about-container">
-      <HeroHeader title="Reports" breadcrumbs={['Reports']} backgroundImage={BackgroundJpg} />
+      <HeroHeader title="Resources" breadcrumbs={['Resources']} backgroundImage={BackgroundJpg} />
       <div className="page-content">
         <div className="container">
           <div className="about-publications">
