@@ -38,11 +38,9 @@ custom:
       # certificateArn: arn:aws:acm:us-east-1:909101490035:certificate/b10e0588-ab7f-4f83-8088-7da4b64d25a0
       domainName: bahamasemissionregistry.org
       certificateArn: arn:aws:acm:us-east-1:909101490035:certificate/4a2dbb84-18a7-4778-93e6-4cde945da782
-      enableBasicAuth: ''
     ner:
       domainName: ner.bahamas.gov.bs
       certificateArn: arn:aws:acm:us-east-1:909101490035:certificate/cb326f80-7e4e-4f7f-b952-dc97b7c50f55
-      enableBasicAuth: '#'
   stageProps:
     ${self:custom.stages.${self:provider.stage}}
 
@@ -51,6 +49,8 @@ plugins:
   - serverless-s3-remover
 
 resources:
+  Conditions:
+    IsUATStage: !Equals ['${self:provider.stage}', 'uat']
   Resources:
     WebsiteStaticBucket:
       Type: AWS::S3::Bucket
@@ -66,6 +66,7 @@ resources:
           IndexDocument: index.html
     BasicAuthFunction:
       Type: AWS::CloudFront::Function
+      Condition: IsUATStage
       Properties:
         Name: !Sub '${AWS::StackName}-basic-auth-${AWS::AccountId}'
         AutoPublish: true
@@ -148,9 +149,12 @@ resources:
             - HEAD
             Compress: true
             TargetOriginId: S3Origin
-            ${self:custom.stageProps.enableBasicAuth}FunctionAssociations:
-            - EventType: viewer-request
-              FunctionArn: !GetAtt BasicAuthFunction.FunctionMetadata.FunctionARN
+            FunctionAssociations:
+              !If
+                - IsUATStage
+                - - EventType: viewer-request
+                    FunctionArn: !GetAtt BasicAuthFunction.FunctionMetadata.FunctionARN
+                - !Ref 'AWS::NoValue'
             ForwardedValues:
               QueryString: true
               Cookies:
