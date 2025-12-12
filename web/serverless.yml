@@ -49,8 +49,6 @@ plugins:
   - serverless-s3-remover
 
 resources:
-  Conditions:
-    IsUATStage: !Equals ['${self:provider.stage}', 'uat']
   Resources:
     WebsiteStaticBucket:
       Type: AWS::S3::Bucket
@@ -66,7 +64,6 @@ resources:
           IndexDocument: index.html
     BasicAuthFunction:
       Type: AWS::CloudFront::Function
-      Condition: IsUATStage
       Properties:
         Name: !Sub '${AWS::StackName}-basic-auth-${AWS::AccountId}'
         AutoPublish: true
@@ -150,11 +147,8 @@ resources:
             Compress: true
             TargetOriginId: S3Origin
             FunctionAssociations:
-              Fn::If:
-              - IsUATStage
-              - - EventType: viewer-request
-                  FunctionArn: !GetAtt BasicAuthFunction.FunctionMetadata.FunctionARN
-              - Ref: AWS::NoValue
+            - EventType: viewer-request
+              FunctionArn: !GetAtt BasicAuthFunction.FunctionMetadata.FunctionARN
             ForwardedValues:
               QueryString: true
               Cookies:
