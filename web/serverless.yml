@@ -38,9 +38,11 @@ custom:
       # certificateArn: arn:aws:acm:us-east-1:909101490035:certificate/b10e0588-ab7f-4f83-8088-7da4b64d25a0
       domainName: bahamasemissionregistry.org
       certificateArn: arn:aws:acm:us-east-1:909101490035:certificate/4a2dbb84-18a7-4778-93e6-4cde945da782
+      enableBasicAuth: ''
     ner:
       domainName: ner.bahamas.gov.bs
       certificateArn: arn:aws:acm:us-east-1:909101490035:certificate/cb326f80-7e4e-4f7f-b952-dc97b7c50f55
+      enableBasicAuth: '#'
   stageProps:
     ${self:custom.stages.${self:provider.stage}}
 
@@ -62,6 +64,54 @@ resources:
         WebsiteConfiguration:
           ErrorDocument: index.html
           IndexDocument: index.html
+    BasicAuthFunction:
+      Type: AWS::CloudFront::Function
+      Properties:
+        Name: !Sub '${AWS::StackName}-basic-auth-${AWS::AccountId}'
+        AutoPublish: true
+        FunctionCode: |
+          function handler(event) {
+            const request = event.request;
+            const headers = request.headers;
+            const uri = request.uri;
+            const protectedRoutes = [
+              "/privacy_policy.html",
+              "/terms_and_conditions.html",
+              "/code_of_conduct.html",
+              "/cookie_policy.html",
+              "/fallback.html",
+              "/index.html",
+              "/"
+            ];
+            const requiresAuth = protectedRoutes.some((route) => uri === route) || uri.endsWith('.html');
+            if (!requiresAuth) {
+              return request;
+            }
+            const username = "admin";
+            const password = "bio@carbon2025";
+            const expectedAuth = "Basic " + btoa(username + ":" + password);
+            const authHeader = headers.authorization;
+            if (authHeader && authHeader.value === expectedAuth) {
+              return request;
+            }
+            const response = {
+              statusCode: 401,
+              statusDescription: "Unauthorized",
+              headers: {
+                "www-authenticate": {
+                  value: 'Basic realm="Protected Static Pages"'
+                },
+                "content-type": {
+                  value: "text/html; charset=utf-8"
+                }
+              },
+              body: "<!DOCTYPE html><html><head><title>401 Unauthorized</title><style>body{font-family:Arial,sans-serif;display:flex;justify-content:center;align-items:center;height:100vh;margin:0;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%)}.container{text-align:center;background:white;padding:40px;border-radius:8px;box-shadow:0 10px 25px rgba(0,0,0,0.2)}h1{color:#333;margin:0 0 10px 0}p{color:#666;margin:10px 0}</style></head><body><div class='container'><h1>401 Unauthorized</h1><p>Authentication required to access this page.</p><p>Please provide valid credentials.</p></div></body></html>"
+            };
+            return response;
+          }
+        FunctionConfig:
+          Comment: Basic authentication for all static protected pages and HTML files
+          Runtime: cloudfront-js-1.0
     WebsiteBucketPolicy:
       Type: AWS::S3::BucketPolicy
       Properties:
@@ -98,6 +148,9 @@ resources:
             - HEAD
             Compress: true
             TargetOriginId: S3Origin
+            ${self:custom.stageProps.enableBasicAuth}FunctionAssociations:
+            - EventType: viewer-request
+              FunctionArn: !GetAtt BasicAuthFunction.FunctionMetadata.FunctionARN
             ForwardedValues:
               QueryString: true
               Cookies:
