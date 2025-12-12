@@ -149,10 +149,8 @@ resources:
             FunctionAssociations:
             - EventType: viewer-request
               FunctionArn: !GetAtt BasicAuthFunction.FunctionMetadata.FunctionARN
-            ForwardedValues:
-              QueryString: true
-              Cookies:
-                Forward: none
+            CachePolicyId: 658327ea-f89d-4fab-a63d-7e88639e58f6
+            OriginRequestPolicyId: 216adef5-5c7f-47e4-b989-5492eafa07d3
             ViewerProtocolPolicy: redirect-to-https
           PriceClass: PriceClass_100
           ViewerCertificate:
