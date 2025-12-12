@@ -150,11 +150,11 @@ resources:
             Compress: true
             TargetOriginId: S3Origin
             FunctionAssociations:
-              !If
-                - IsUATStage
-                - - EventType: viewer-request
-                    FunctionArn: !GetAtt BasicAuthFunction.FunctionMetadata.FunctionARN
-                - !Ref 'AWS::NoValue'
+              Fn::If:
+              - IsUATStage
+              - - EventType: viewer-request
+                  FunctionArn: !GetAtt BasicAuthFunction.FunctionMetadata.FunctionARN
+              - Ref: AWS::NoValue
             ForwardedValues:
               QueryString: true
               Cookies:
