@@ -35,7 +35,7 @@ const NationallyDeterminedContributions = () => {
                 </p>
                 <p>
                   Full Details of the Bahamas NDCs can be found{' '}
-                  <a href="https://unfccc.int/sites/default/files/NDC/2022-11/Bahamas%20Updated%20Nationally%20Determined%20Contribution.pdf">
+                  <a href="https://unfccc.int/sites/default/files/2025-11/The%20Bahamas%20NDC%203.0.pdf">
                     here
                   </a>
                   .
