@@ -72,7 +72,7 @@ const Contact = () => {
                 <Form.Item label="Message" name="message">
                   <Input.TextArea placeholder="Your message..." rows={6} />
                 </Form.Item>
-                <Form.Item label="Website" name="website" className="sr-only">
+                <Form.Item label="Website" name="website" hidden className="sr-only">
                   <Input autoComplete="off" tabIndex={-1} aria-hidden="true" />
                 </Form.Item>
                 <div style={{ marginBottom: 16 }}>
