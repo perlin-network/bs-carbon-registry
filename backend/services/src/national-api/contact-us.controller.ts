@@ -85,15 +85,18 @@ export class ContactUsController {
     }
 
     try {
-      const verifyUrl = 'https://www.google.com/recaptcha/api/siteverify';
-      const params = new URLSearchParams();
-      params.append('secret', secret);
-      params.append('response', token);
+      const query = new URLSearchParams({
+        secret,
+        response: token,
+      });
       if (clientIp && clientIp !== 'unknown') {
-        params.append('remoteip', clientIp);
+        query.append('remoteip', clientIp);
       }
-      const { data } = await axios.post(verifyUrl, params.toString(), {
+
+      const verifyUrl = `https://www.google.com/recaptcha/api/siteverify?${query.toString()}`;
+      const { data } = await axios.post(verifyUrl, null, {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        timeout: 7000,
       });
 
       if (!data.success) {
@@ -101,7 +104,12 @@ export class ContactUsController {
         throw new HttpException('reCAPTCHA verification failed', HttpStatus.BAD_REQUEST);
       }
     } catch (err) {
-      this.logger.error('reCAPTCHA verification error', err instanceof Error ? err.stack : String(err));
+      if (axios.isAxiosError(err)) {
+        const errorData = err.response?.data;
+        this.logger.error(`reCAPTCHA axios error: ${JSON.stringify(errorData)}`);
+      } else {
+        this.logger.error('reCAPTCHA verification error', err instanceof Error ? err.stack : String(err));
+      }
       throw new HttpException('reCAPTCHA verification error', HttpStatus.BAD_REQUEST);
     }
   }
