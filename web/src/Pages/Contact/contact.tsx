@@ -35,13 +35,11 @@ const Contact = () => {
         honeypotValue: values.website,
         elapsedMs: Date.now() - formStartRef.current,
       };
-      const response = await post('national/contact', payload);
-      if (!response.ok) {
-        throw new Error('Failed to send message');
-      }
+      await post('national/contact', payload);
       message.success('Message sent!');
       form.resetFields();
       setRecaptchaToken(null);
+      formStartRef.current = Date.now();
     } catch (err) {
       message.error('Error occurred');
       console.error(err);
