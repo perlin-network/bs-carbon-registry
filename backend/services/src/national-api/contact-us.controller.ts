@@ -85,23 +85,29 @@ export class ContactUsController {
     }
 
     try {
-      const query = new URLSearchParams({
-        secret,
-        response: token,
-      });
+      const params = new URLSearchParams();
+      params.append('secret', secret);
+      params.append('response', token);
       if (clientIp && clientIp !== 'unknown') {
-        query.append('remoteip', clientIp);
+        params.append('remoteip', clientIp);
       }
 
-      const verifyUrl = `https://www.google.com/recaptcha/api/siteverify?${query.toString()}`;
-      const { data } = await axios.post(verifyUrl, null, {
+      const verifyUrl = 'https://www.google.com/recaptcha/api/siteverify';
+      const { data } = await axios.post(verifyUrl, params.toString(), {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         timeout: 7000,
       });
 
       if (!data.success) {
-        this.logger.warn(`reCAPTCHA verification failed for ${clientIp}`);
-        throw new HttpException('reCAPTCHA verification failed', HttpStatus.BAD_REQUEST);
+        const errorCodes: string[] = data['error-codes'] ?? [];
+        const detail = errorCodes.length > 0 ? errorCodes.join(', ') : 'unknown_error';
+        this.logger.error(
+          `reCAPTCHA verification failed for ${clientIp}: ${detail}`
+        );
+        if (errorCodes.includes('invalid-input-secret') || errorCodes.includes('missing-input-secret')) {
+          throw new HttpException('reCAPTCHA secret misconfigured', HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        throw new HttpException(`reCAPTCHA verification failed: ${detail}`, HttpStatus.BAD_REQUEST);
       }
     } catch (err) {
       if (axios.isAxiosError(err)) {
