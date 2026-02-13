@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import './contact.scss';
 import { Form, Input, Button, message } from 'antd';
@@ -19,6 +19,8 @@ const Contact = () => {
   const [form] = Form.useForm();
   const { post } = useConnection();
 
+  const formStartRef = useRef(Date.now());
+
   const onFinish = async (values: any) => {
     if (!recaptchaToken) {
       message.error('Please complete the reCAPTCHA.');
@@ -27,7 +29,16 @@ const Contact = () => {
     try {
       setLoading(true);
       // Include the recaptchaToken in the payload
-      const response = await post('national/contact', { ...values, recaptchaToken });
+      const payload = {
+        ...values,
+        recaptchaToken,
+        honeypotValue: values.website,
+        elapsedMs: Date.now() - formStartRef.current,
+      };
+      const response = await post('national/contact', payload);
+      if (!response.ok) {
+        throw new Error('Failed to send message');
+      }
       message.success('Message sent!');
       form.resetFields();
       setRecaptchaToken(null);
@@ -62,6 +73,9 @@ const Contact = () => {
                 </Form.Item>
                 <Form.Item label="Message" name="message">
                   <Input.TextArea placeholder="Your message..." rows={6} />
+                </Form.Item>
+                <Form.Item label="Website" name="website" className="sr-only">
+                  <Input autoComplete="off" tabIndex={-1} aria-hidden="true" />
                 </Form.Item>
                 <div style={{ marginBottom: 16 }}>
                   <ReCAPTCHA sitekey={recaptchaSiteKey} onChange={setRecaptchaToken} />

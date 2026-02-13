@@ -6,6 +6,8 @@ import { ContactUsDto } from "../dto/contact-us.dto";
 import { EmailTemplates } from "../email-helper/email.template";
 import { EmailHelperService } from "../email-helper/email-helper.service";
 
+type ContactMessagePayload = Pick<ContactUsDto, "name" | "email" | "message">;
+
 @Injectable()
 export class ContactUsService{
 
@@ -16,7 +18,7 @@ export class ContactUsService{
     private emailHelperService: EmailHelperService,
   ){}
 
-  async addMessage(message:ContactUsDto){
+  async addMessage(message: ContactMessagePayload){
     const templateData = {
       name: message.name,
       email: message.email,
