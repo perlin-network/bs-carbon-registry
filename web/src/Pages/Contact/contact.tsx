@@ -7,15 +7,14 @@ import BackgroundJpg from '../../Assets/Images/contact-bg.jpg';
 import MapComponent from '../../Components/Maps/MapComponent';
 import config from '../../config';
 import { useConnection } from '../../Context/ConnectionContext/connectionContext';
-// Replace with your actual reCAPTCHA v2 site key
-console.log('Recaptcha Key:', config.recaptchaSiteKey);
-const recaptchaSiteKey = config.recaptchaSiteKey ?? 'REACT_APP_RECAPTCHA_SITE_KEY';
+const recaptchaSiteKey = config.recaptchaSiteKey || '';
 
 const mapType = config.mapType;
 
 const Contact = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
   const [form] = Form.useForm();
   const { post } = useConnection();
 
@@ -39,10 +38,14 @@ const Contact = () => {
       message.success('Message sent!');
       form.resetFields();
       setRecaptchaToken(null);
+      recaptchaRef.current?.reset();
       formStartRef.current = Date.now();
     } catch (err) {
       message.error('Error occurred');
       console.error(err);
+      setRecaptchaToken(null);
+      recaptchaRef.current?.reset();
+      formStartRef.current = Date.now();
     } finally {
       setLoading(false);
     }
@@ -76,7 +79,13 @@ const Contact = () => {
                   <Input autoComplete="off" tabIndex={-1} aria-hidden="true" />
                 </Form.Item>
                 <div style={{ marginBottom: 16 }}>
-                  <ReCAPTCHA sitekey={recaptchaSiteKey} onChange={setRecaptchaToken} />
+                  <ReCAPTCHA
+                    ref={recaptchaRef}
+                    sitekey={recaptchaSiteKey}
+                    onChange={setRecaptchaToken}
+                    onExpired={() => setRecaptchaToken(null)}
+                    onErrored={() => setRecaptchaToken(null)}
+                  />
                 </div>
                 {/* Button triggers form submit */}
                 <div className="login-submit-btn-container">

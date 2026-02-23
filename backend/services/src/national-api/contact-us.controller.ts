@@ -84,10 +84,15 @@ export class ContactUsController {
       throw new HttpException('reCAPTCHA secret not configured', HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
+    const normalizedToken = token?.trim();
+    if (!normalizedToken) {
+      throw new HttpException('reCAPTCHA token missing', HttpStatus.BAD_REQUEST);
+    }
+
     try {
       const params = new URLSearchParams();
       params.append('secret', secret);
-      params.append('response', token);
+      params.append('response', normalizedToken);
       if (clientIp && clientIp !== 'unknown') {
         params.append('remoteip', clientIp);
       }
@@ -106,6 +111,13 @@ export class ContactUsController {
         );
         if (errorCodes.includes('invalid-input-secret') || errorCodes.includes('missing-input-secret')) {
           throw new HttpException('reCAPTCHA secret misconfigured', HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        if (
+          errorCodes.includes('invalid-input-response') ||
+          errorCodes.includes('timeout-or-duplicate') ||
+          errorCodes.includes('missing-input-response')
+        ) {
+          throw new HttpException('reCAPTCHA token invalid or expired. Please retry.', HttpStatus.BAD_REQUEST);
         }
         throw new HttpException(`reCAPTCHA verification failed: ${detail}`, HttpStatus.BAD_REQUEST);
       }
