@@ -26,7 +26,6 @@ provider:
     DB_NAME: "bscarbondb${self:provider.stage}"
     DB_HOST: "bscarbondb${self:provider.stage}.c0rjpojmhdkp.us-east-1.rds.amazonaws.com"
     ASYNC_QUEUE_NAME: https://sqs.us-east-1.amazonaws.com/909101490035/BSAsyncQueue${self:provider.stage}.fifo
-    RECAPTCHA_SECRET_KEY: /${self:service}/${self:provider.stage}/RECAPTCHA_SECRET_KEY~true
 
   # iam:
   #   role: arn:aws:iam::909101490035:role/lambda-role
@@ -74,6 +73,7 @@ custom:
   serverlessSsmFetch:
     USER_JWT_SECRET: /${self:service}/${self:provider.stage}/USER_JWT_SECRET~true
     ADMIN_JWT_SECRET: /${self:service}/${self:provider.stage}/ADMIN_JWT_SECRET~true
+    RECAPTCHA_SECRET_KEY: /${self:service}/${self:provider.stage}/RECAPTCHA_SECRET_KEY~true
     DB_PASSWORD: /${self:service}/${self:provider.stage}/DB_PASSWORD~true
     SMTP_USERNAME: /${self:service}/${self:provider.stage}/SMTP_USERNAME~true
     SMTP_PASSWORD: /${self:service}/${self:provider.stage}/SMTP_PASSWORD~true
