@@ -6,6 +6,10 @@ import BackgroundJpg from '../../Assets/Images/news-bg.jpg';
 
 const publications = [
   {
+    title: 'Annual Report',
+    url: 'https://bio-carbon-registry-app-prod.s3.us-east-1.amazonaws.com/assets/NER+FINAL+2025+ANNUAL+REPORT.pdf',
+  },
+  {
     title: 'Climate Change and Carbon Markets Initiatives Act ',
     url: 'https://laws.bahamas.gov.bs/cms/images/LEGISLATION/PRINCIPAL/2022/2022-0015/2022-0015_1.pdf',
   },
