@@ -7,11 +7,14 @@ import i18next from 'i18next';
 import './homepage.scss';
 // import config from '../../config';
 import AboutUsJpg from '../../Assets/Images/home-about-us.jpg';
+import previewImage from '../../Assets/Images/ previewImage.jpg';
+import * as Icon from 'react-bootstrap-icons';
 
 const Homepage = () => {
   const navigate = useNavigate();
   const { i18n, t } = useTranslation(['common', 'homepage']);
   const [Visible, setVisible] = useState(true);
+  const [visiblePopUp, setVisiblePopup] = useState(true);
 
   const controlDownArrow = () => {
     if (window.scrollY > 150) {
@@ -31,6 +34,15 @@ const Homepage = () => {
       // 👇 Will scroll smoothly to the top of the next section
       element.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+  const handleReportClick = () => {
+    // open report
+    window.open(
+      'https://bio-carbon-registry-app-prod.s3.us-east-1.amazonaws.com/assets/NER+FINAL+2025+ANNUAL+REPORT.pdf',
+      '_blank'
+    );
+
+    setVisiblePopup(false);
   };
 
   useEffect(() => {
@@ -72,6 +84,24 @@ const Homepage = () => {
                     Sign In
                   </Button>
                 </div>
+                {visiblePopUp && (
+                  <div className="popup-overlay">
+                    <div className="announcement-popup">
+                      <button className="close-btn" onClick={() => setVisiblePopup(false)}>
+                        <Icon.X />
+                      </button>
+
+                      <span className="announcement-text" onClick={handleReportClick}>
+                        {t(' NER 2025 Annual Report now available ')}
+                      </span>
+
+                      <div className="pdf-preview" onClick={handleReportClick}>
+                        <img src={previewImage} alt="PDF Preview" />
+                        <div className="preview-overlay">{t('Click to view')}</div>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
               {Visible && (
                 <nav className={'arrows'}>

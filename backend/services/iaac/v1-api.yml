@@ -28,6 +28,7 @@ v1NationalApi:
     - DB_PASSWORD
     - USER_JWT_SECRET
     - ADMIN_JWT_SECRET
+    - RECAPTCHA_SECRET_KEY
     - SMTP_USERNAME
     - SMTP_PASSWORD
   layers:
@@ -62,6 +63,7 @@ v1AnalyticsApi:
     - DB_PASSWORD
     - USER_JWT_SECRET
     - ADMIN_JWT_SECRET
+    - RECAPTCHA_SECRET_KEY
     - SMTP_USERNAME
     - SMTP_PASSWORD
   layers:
