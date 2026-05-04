@@ -44,6 +44,7 @@ import AccessibilityStatement from './Pages/AccessibilityStatement/accessibility
 import RegistrarFunctions from './Pages/RegistrarFunctions/registrarFunctions';
 import Contact from './Pages/Contact/contact';
 import Incentives from './Pages/Incentives/incentives';
+import AnnualReport from './Pages/AnnualReport/AnnualReport';
 import Faqs from './Pages/Faqs/Faqs';
 
 // message.config({
@@ -82,6 +83,7 @@ const App = () => {
                 <Route path="cookie" element={<CookiePolicy />} />
                 <Route path="terms" element={<TermsOfUse />} />
                 <Route path="signupFrameView" element={<SignupFrameView />} />
+                <Route path="annual-report/:year" element={<AnnualReport />} />
                 <Route path="/" element={<CommonLayout />}>
                   <Route index element={<Homepage />} />
                   <Route path="about" element={<About />} />

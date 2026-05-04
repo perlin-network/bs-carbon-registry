@@ -36,11 +36,7 @@ const Homepage = () => {
     }
   };
   const handleReportClick = () => {
-    // open report
-    window.open(
-      'https://bio-carbon-registry-app-prod.s3.us-east-1.amazonaws.com/assets/NER+FINAL+2025+ANNUAL+REPORT.pdf',
-      '_blank'
-    );
+    window.open('/annual-report/2025', '_blank');
 
     setVisiblePopup(false);
   };
