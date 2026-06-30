@@ -11,7 +11,7 @@ export class ContactUsDto {
   })
   @ValidateIf(
     (o) =>
-      (o.submissionType || o.type || "contact") !== "suggestion" || !!o.name
+      (o.type || "contact") !== "suggestion" || !!o.name
   )
   @IsString()
   @IsNotEmpty()
@@ -25,7 +25,7 @@ export class ContactUsDto {
   })
   @ValidateIf(
     (o) =>
-      (o.submissionType || o.type || "contact") !== "suggestion" || !!o.email
+      (o.type || "contact") !== "suggestion" || !!o.email
   )
   @IsEmail()
   @IsNotEmpty()
@@ -57,17 +57,7 @@ export class ContactUsDto {
   @Min(0)
   @IsNotEmpty()
   elapsedMs: number;
-
-  @ApiProperty({
-    description: "Submission type for the shared contact endpoint",
-    required: false,
-    enum: ["contact", "suggestion"],
-    default: "contact",
-  })
-  @IsOptional()
-  @IsIn(["contact", "suggestion"])
-  submissionType?: "contact" | "suggestion";
-
+ 
   @ApiProperty({
     description: "Submission type for the shared contact endpoint",
     required: false,

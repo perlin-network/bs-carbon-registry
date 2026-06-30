@@ -19,13 +19,13 @@ export class ContactUsService {
     private emailHelperService: EmailHelperService,
   ) { }
 
-  private getSubmissionType(message: ContactUsDto): "contact" | "suggestion" {
-    return message.submissionType || message.type || "contact";
+  private getType(message: ContactUsDto): "contact" | "suggestion" {
+    return message.type || "contact";
   }
 
   async addMessage(message: ContactUsDto) {
-    const submissionType = this.getSubmissionType(message);
-    const isSuggestion = submissionType === "suggestion";
+    const type = this.getType(message);
+    const isSuggestion = type === "suggestion";
     const fallbackSubject = isSuggestion
       ? "Green Incentive Suggestion Submission"
       : "Contact Form Submission";
