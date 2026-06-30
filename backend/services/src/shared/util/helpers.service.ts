@@ -17,7 +17,7 @@ export class HelperService {
   ) {}
 
   public isBase64(text: string): boolean {
-    return Buffer.from(text, 'base64').toString('base64') === text
+    return Buffer.from(text, "base64").toString("base64") === text;
   }
 
   private prepareValue(value: any, table?: string, toLower?: boolean) {
@@ -279,11 +279,18 @@ export class HelperService {
     return sql;
   }
 
-  public generateWhereSQL(query: QueryDto, extraSQL: string, table?: string, ignoreCol?: string[]) {
+  public generateWhereSQL(
+    query: QueryDto,
+    extraSQL: string,
+    table?: string,
+    ignoreCol?: string[]
+  ) {
     let sql = "";
     if (query.filterAnd) {
       if (ignoreCol) {
-        query.filterAnd = query.filterAnd.filter(e=> (ignoreCol.indexOf(e.key) >= 0))
+        query.filterAnd = query.filterAnd.filter(
+          (e) => ignoreCol.indexOf(e.key) >= 0
+        );
       }
       sql += query.filterAnd
         .map((e) => {
@@ -312,7 +319,9 @@ export class HelperService {
     }
     if (query.filterOr) {
       if (ignoreCol) {
-        query.filterOr = query.filterOr.filter(e=> (ignoreCol.indexOf(e.key) >= 0))
+        query.filterOr = query.filterOr.filter(
+          (e) => ignoreCol.indexOf(e.key) >= 0
+        );
       }
       const orSQl = query.filterOr
         .map((e) => {
@@ -424,23 +433,36 @@ export class HelperService {
     return final;
   }
 
-  public getEmailTemplateMessage(template: string, data, isSubject: boolean) :string{
+  public getEmailTemplateMessage(
+    template: string,
+    data,
+    isSubject: boolean
+  ): string {
     if (template == undefined) {
-        return template;
-    }
-    for (const key in data) {
-        if (data.hasOwnProperty(key)) {
-            var find = `{{${key}}}`;
-            var re = new RegExp(find, 'g');
-            template = template.replace(re, data[key]);
-        }
+      return template;
     }
 
-    if(isSubject)
-      return `Emissions Registry: ${template}`;
-    else 
-      return template;
-}
+    template = template.replace(
+      /{{#if\s+([a-zA-Z0-9_]+)}}([\s\S]*?){{\/if}}/g,
+      (_match, key, content) => {
+        const value = data?.[key];
+        return value === undefined || value === null || value === ""
+          ? ""
+          : content;
+      }
+    );
+
+    for (const key in data) {
+      if (data.hasOwnProperty(key)) {
+        var find = `{{${key}}}`;
+        var re = new RegExp(find, "g");
+        template = template.replace(re, data[key]);
+      }
+    }
+
+    if (isSubject) return `Emissions Registry: ${template}`;
+    else return template;
+  }
 
   // public async uploadCompanyLogoS3(companyId: number, companyLogo: string) {
   // var AWS = require("aws-sdk");

@@ -385,25 +385,18 @@ export class EmailHelperService {
     });
   }
 
-  public async sendContactEmail(
-    template,
-    templateData: any,
-  ) {
+  public async sendContactEmail(template, templateData: any, subject: string) {
     if (this.isEmailDisabled) return;
     const sender = this.configService.get("email.source");
     const users = await this.userService.getGovAdminAndManagerUsers();
-    let cc = users.map(user => user.user_email);
+    let cc = users.map((user) => user.user_email);
     const action: AsyncAction = {
       actionType: AsyncActionType.Email,
       actionProps: {
         emailType: template.id,
         sender: sender,
         cc: cc,
-        subject: this.helperService.getEmailTemplateMessage(
-          template["subject"],
-          templateData,
-          true
-        ),
+        subject: subject,
         emailBody: this.helperService.getEmailTemplateMessage(
           template["html"],
           templateData,
@@ -414,11 +407,7 @@ export class EmailHelperService {
     await this.asyncOperationsInterface.AddAction(action);
   }
 
-
-  public async sendCreateUser(
-    template,
-    templateData: any,
-  ) {
+  public async sendCreateUser(template, templateData: any) {
     if (this.isEmailDisabled) return;
     if (templateData.companyEmail) {
       const compData = {
@@ -450,7 +439,7 @@ export class EmailHelperService {
       //send email to government admins
       const sender = this.configService.get("email.source");
       const users = await this.userService.getGovAdminAndManagerUsers();
-      let cc = users.map(user => user.user_email);
+      let cc = users.map((user) => user.user_email);
       const adminAction: AsyncAction = {
         actionType: AsyncActionType.Email,
         actionProps: {

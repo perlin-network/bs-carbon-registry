@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import './contact.scss';
 import { Form, Input, Button, message } from 'antd';
@@ -30,9 +30,11 @@ const Contact = () => {
       // Include the recaptchaToken in the payload
       const payload = {
         ...values,
+        subject: 'Contact Form Submission',
         recaptchaToken,
         honeypotValue: values.website,
         elapsedMs: Date.now() - formStartRef.current,
+        type: 'contact',
       };
       await post('national/contact', payload);
       message.success('Message sent!');

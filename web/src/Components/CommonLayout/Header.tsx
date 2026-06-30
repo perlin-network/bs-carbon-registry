@@ -17,6 +17,10 @@ const menuItems = [
     link: '/incentives',
   },
   {
+    text: 'Incentives Suggestions',
+    link: '/incentives-suggestions',
+  },
+  {
     text: 'FAQs',
     link: '/faqs',
   },

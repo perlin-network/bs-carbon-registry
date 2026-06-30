@@ -1,4 +1,4 @@
-import { File as MulterFile } from 'multer';
+import type { Express } from 'express';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { SignupDto } from '../dto/signup.dto';
@@ -35,13 +35,13 @@ export class SignupService {
   async handleFormSubmission(
     formData: SignupDto,
     files?: {
-  evidenceOfRegistration?: MulterFile;
-  businessLicense?: MulterFile;
-  financialIntegrity?: MulterFile;
-  managementDossier?: MulterFile;
-  scientificExperience?: MulterFile;
-  financialExpertise?: MulterFile;
-  environmentalExpertise?: MulterFile;
+      evidenceOfRegistration?: Express.Multer.File[];
+      businessLicense?: Express.Multer.File[];
+      financialIntegrity?: Express.Multer.File[];
+      managementDossier?: Express.Multer.File[];
+      scientificExperience?: Express.Multer.File[];
+      financialExpertise?: Express.Multer.File[];
+      environmentalExpertise?: Express.Multer.File[];
     }
   ): Promise<any> {
     // ✅ Create a new Company entity from formData
