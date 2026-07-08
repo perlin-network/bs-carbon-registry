@@ -55,7 +55,7 @@ const registryCategories: RegistryCategory[] = [
       {
         title: 'Electric Golf Carts',
         description:
-          'A duty reduction of 10% is applied to electric motorcycles compared to a duty of 75% for motorcycles with internal combustion engines.',
+          'A duty reduction of 10% is applied to electric golf carts compared to a duty of 75% for golf carts with internal combustion engines.',
       },
       {
         title: 'Electric Motorcycles',
