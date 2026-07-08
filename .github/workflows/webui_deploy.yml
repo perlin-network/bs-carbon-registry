@@ -39,21 +39,21 @@ jobs:
           if [ "${{ github.event.inputs.stage_name }}" == "ner" ]; then
             echo "REACT_APP_IFRAME_BASE_URL=https://app.ner.bahamas.gov.bs" >> $GITHUB_ENV
           else
-            echo "REACT_APP_IFRAME_BASE_URL=https://carbon.bahamasemissionregistry.org" >> $GITHUB_ENV
+            echo "REACT_APP_IFRAME_BASE_URL=https://carbon-testing.bahamasemissionregistry.org" >> $GITHUB_ENV
           fi
       - name: Set REACT_APP_CARBON_LOGIN_LINK
         run: |
           if [ "${{ github.event.inputs.stage_name }}" == "ner" ]; then
             echo "REACT_APP_CARBON_LOGIN_LINK=https://admin.ner.bahamas.gov.bs" >> $GITHUB_ENV
           else
-            echo "REACT_APP_CARBON_LOGIN_LINK=https://admin.carbon.bahamasemissionregistry.org" >> $GITHUB_ENV
+            echo "REACT_APP_CARBON_LOGIN_LINK=https://admin.carbon-testing.bahamasemissionregistry.org" >> $GITHUB_ENV
           fi
       - name: Set REACT_APP_BIO_LOGIN_LINK
         run: |
           if [ "${{ github.event.inputs.stage_name }}" == "ner" ]; then
             echo "REACT_APP_BIO_LOGIN_LINK=https://admin.bio.bahamas.gov.bs" >> $GITHUB_ENV
           else
-            echo "REACT_APP_BIO_LOGIN_LINK=https://admin.bio.bahamasemissionregistry.org" >> $GITHUB_ENV
+            echo "REACT_APP_BIO_LOGIN_LINK=https://admin.bio-testing.bahamasemissionregistry.org" >> $GITHUB_ENV
           fi
 
       - name: Set REACT_APP_RECAPTCHA_SITE_KEY

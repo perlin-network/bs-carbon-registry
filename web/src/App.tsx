@@ -45,6 +45,7 @@ import RegistrarFunctions from './Pages/RegistrarFunctions/registrarFunctions';
 import Contact from './Pages/Contact/contact';
 import Incentives from './Pages/Incentives/incentives';
 import AnnualReport from './Pages/AnnualReport/AnnualReport';
+import IncentiveSuggestions from './Pages/IncentiveSuggestions/incentiveSuggestions';
 import Faqs from './Pages/Faqs/Faqs';
 
 // message.config({
@@ -92,6 +93,7 @@ const App = () => {
                     element={<NationallyDeterminedContributions />}
                   />
                   <Route path="incentives" element={<Incentives />} />
+                  <Route path="incentives-suggestions" element={<IncentiveSuggestions />} />
                   <Route path="faqs" element={<Faqs />} />
 
                   <Route path="accessibilityStatement" element={<AccessibilityStatement />} />

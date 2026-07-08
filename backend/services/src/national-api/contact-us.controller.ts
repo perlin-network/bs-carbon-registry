@@ -60,10 +60,9 @@ export class ContactUsController {
     this.enforceRateLimit(clientIp);
     this.ensureBasicFields(contactUsDto);
 
-    const { name, email, message } = contactUsDto;
-    const result = await this.contactUsService.addMessage({ name, email, message });
+    const result = await this.contactUsService.addMessage(contactUsDto);
 
-    this.logger.log(`Contact submission queued for ${email} from ${clientIp}`);
+    this.logger.log(`Contact submission queued for ${contactUsDto.email} from ${clientIp}`);
 
     return {
       statusCode: HttpStatus.OK,

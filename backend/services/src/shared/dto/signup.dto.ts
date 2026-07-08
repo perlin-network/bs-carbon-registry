@@ -1,10 +1,8 @@
-import * as Express from 'express';
+import type { Express } from 'express';
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { Transform } from 'class-transformer';
 import { IsBoolean, IsEmail, IsEnum, IsNotEmpty, IsOptional, IsString, MaxLength } from 'class-validator';
 import { CompanyType } from '../enum/company.type.enum';
-import { File as MulterFile } from 'multer';
-
 export class SignupDto {
   @ApiProperty()
   @IsString()
@@ -68,23 +66,23 @@ export class SignupDto {
   writeSummary: string;
 
   @IsOptional()
-  evidenceOfRegistration?: MulterFile;
+  evidenceOfRegistration?: Express.Multer.File;
 
   @IsOptional()
-  businessLicense?: MulterFile;
+  businessLicense?: Express.Multer.File;
 
   @IsOptional()
-  financialIntegrity?: MulterFile;
+  financialIntegrity?: Express.Multer.File;
 
   @IsOptional()
-  managementDossier?: MulterFile;
+  managementDossier?: Express.Multer.File;
 
   @IsOptional()
-  scientificExperience?: MulterFile;
+  scientificExperience?: Express.Multer.File;
 
   @IsOptional()
-  financialExpertise?: MulterFile;
+  financialExpertise?: Express.Multer.File;
 
   @IsOptional()
-  environmentalExpertise?: MulterFile;
+  environmentalExpertise?: Express.Multer.File;
 }

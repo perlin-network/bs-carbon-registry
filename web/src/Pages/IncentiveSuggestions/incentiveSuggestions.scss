@@ -1,0 +1,202 @@
+@import '../../Assets/Fonts/fonts.scss';
+@import '../../Styles/variables.scss';
+
+.incentive-suggestions-container {
+  color: #263238;
+  font-family: $font-family-regular;
+  background: #f7faf8;
+
+  .page-content {
+    padding: 56px 0 64px;
+  }
+
+  .suggestions-intro {
+    margin-bottom: 34px;
+
+    h1 {
+      margin: 0 0 12px;
+      color: $color-primary-dark;
+      font-size: clamp(2rem, 4vw, 3.1rem);
+      font-weight: 800;
+      line-height: 1.12;
+    }
+
+    p {
+      margin: 0;
+      color: $color-neutral-700;
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+  }
+
+  .suggestions-kicker {
+    display: inline-flex;
+    margin-bottom: 12px;
+    padding: 7px 13px;
+    border-radius: 999px;
+    background: rgba(143, 199, 62, 0.16);
+    color: $color-secondary-dark;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .suggestion-form-wrap {
+    border: 1px solid rgba(0, 77, 97, 0.12);
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 22px 60px rgba(16, 24, 40, 0.08);
+    padding: 34px;
+  }
+
+  .form-heading {
+    margin-bottom: 26px;
+
+    span {
+      display: inline-block;
+      margin-bottom: 10px;
+      color: $color-secondary-dark;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 0 0 10px;
+      color: $color-primary-dark;
+      font-size: 2.05rem;
+      font-weight: 800;
+      line-height: 1.15;
+    }
+
+    p {
+      margin: 0;
+      color: $color-neutral-600;
+      line-height: 1.65;
+    }
+  }
+
+  .optional-contact-panel {
+    margin: 24px 0;
+    padding: 22px;
+    border: 1px solid rgba(0, 77, 97, 0.12);
+    border-radius: 16px;
+    background: linear-gradient(180deg, #f8fcfa 0%, #ffffff 100%);
+  }
+
+  .contact-info-heading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+    color: $color-primary-dark;
+    font-size: 1rem;
+    font-weight: 800;
+
+    span {
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: rgba(0, 151, 170, 0.1);
+      color: $color-primary;
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+  }
+
+  .optional-note {
+    margin-bottom: 18px;
+    color: $color-neutral-600;
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+
+  label {
+    color: $color-neutral-700 !important;
+    font-weight: 700;
+  }
+
+  input {
+    height: 52px;
+  }
+
+  input,
+  textarea {
+    border-radius: 12px !important;
+    border-color: #d7e1dd !important;
+    font-size: 0.98rem;
+
+    &:hover,
+    &:focus {
+      border-color: $color-primary !important;
+      box-shadow: 0 0 0 3px rgba(0, 151, 170, 0.1) !important;
+    }
+  }
+
+  .form-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .submit-btn {
+    width: fit-content;
+    height: 48px;
+    padding: 0 26px;
+    border: none;
+    border-radius: 999px;
+    background: $color-primary-dark;
+    font-weight: 800;
+
+    &:hover {
+      background: $color-secondary-dark !important;
+    }
+  }
+
+  .proposal-note {
+    position: relative;
+    margin: 34px 0 0;
+    padding: 34px 34px 32px;
+    border: 2px solid rgba(0, 77, 97, 0.22);
+    border-top: 8px solid $color-green;
+    border-radius: 8px;
+    background: #ffffff;
+    color: $color-primary-dark;
+    font-size: 1.32rem;
+    font-weight: 800;
+    line-height: 1.65;
+    box-shadow: 0 18px 42px rgba(16, 24, 40, 0.14);
+
+    a {
+      color: $color-primary;
+      font-weight: 900;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+  }
+
+  @media (max-width: $md-size) {
+    .page-content {
+      padding: 36px 0 46px;
+    }
+
+    .suggestion-form-wrap {
+      padding: 22px;
+    }
+
+    .proposal-note {
+      padding: 26px 22px;
+      font-size: 1.12rem;
+    }
+
+    .submit-btn {
+      width: 100%;
+    }
+
+    .form-heading h2 {
+      font-size: 1.7rem;
+    }
+
+  }
+}

@@ -105,9 +105,11 @@ export const EmailTemplates = {
   },
   CONTACT_US: {
     id: "CONTACT_US",
-    subject: "Contact Form Submission",
     html: `
-        <p>Name:{{name}}</p><p>Email: {{email}}</p><p>Message: {{message}}</p>
+        {{#if name}}<p><strong>Name:</strong> {{name}}</p>{{/if}}
+        {{#if email}}<p><strong>Email:</strong> {{email}}</p>{{/if}}
+        <p><strong>{{messageLabel}}:</strong></p>
+        <p>{{message}}</p>
         `,
     text: "",
   },
